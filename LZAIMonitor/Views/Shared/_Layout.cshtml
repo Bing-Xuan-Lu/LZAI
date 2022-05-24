@@ -1,0 +1,88 @@
+﻿
+@using LZAIMonitor.Controllers
+@{
+    WebBaseController controller = ViewContext.Controller as WebBaseController;
+
+    if (controller == null)
+    {
+        throw new ApplicationException("Controller 必須繼承自 WebBaseController.");
+    }
+
+    var UserId = controller.LoginUser.UserId;
+    var LoginPermission = controller.LoginUser.LoginPermission == null ? "" : controller.LoginUser.LoginPermission;
+
+}
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宜蘭縣利澤垃圾資源回收（焚化）廠</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/sweetalert2Css")
+    @Styles.Render("~/Content/Select2")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Select2")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/Common")
+    @Scripts.Render("~/bundles/sweetalert2Js")
+    <script>
+        var _TokenHeader = { 'RequestVerificationToken': '@CommonRazorFunctions.GetAntiForgeryToken()' };
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("CarWatch", "Monitor", new {area = ""})">
+                <img src="~/images/LOGO2.png" style="width: 20em;" alt="回首頁" class="d-inline-block align-text-top" />
+            </a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="sweet2load()" href="@Url.Action("CarWatch", "Monitor", new {area = ""})">
+                            <span class="fa fa-road"></span> 車道監控
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="sweet2load()" href="@Url.Action("Track", "Monitor", new {area = ""})">
+                            <span class="fa fa-truck"></span> 車輛監控
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" onclick="Sweet2editDialog('編輯','/Mgr/Users/Users301E0',900,450,'UserId=@UserId') " href="javascript:void(0)"> 個人資料維護</a></li>
+                    @*<li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Mgr/Users/Users30100")"> 個人資料維護</a></li>*@
+                    @if (LoginPermission != "B")//一般
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Cle/WasteCar/WasteCar10100")">
+                                <span class="fa fa-address-book"></span> 進階管理
+                            </a>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="return SweetAlertCheck(this, '登出', '即將進行登出', '!')" href="@Url.Action("Logout", "Home", new {area = ""})">
+                            <span class="fa fa-sign-out"></span> 登出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+        @RenderBody()
+    </div> ﻿
+
+</body>
+</html>

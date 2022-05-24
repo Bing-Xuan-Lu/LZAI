@@ -1,0 +1,45 @@
+﻿@using LZAI.Model.DB
+@model List<VwCleWasteCar>
+
+
+
+<div class="pt-2">
+    @(Html.DataTableFor<VwCleWasteCar>().Columns(
+                col =>
+                {
+                    col.Field(x => x.Head_No);
+                    col.Field(x => x.Plate_No);
+                    col.Field(x => x.CHCarMachine);
+                    col.Field(x => x.Fac_No);
+                    col.Field(x => x.Fac_Name);
+                    col.Field(x => x.CHCarModel);
+
+                    //col.Field(x => x).Title("操作功能").Render("data-formatter", "operateFormatter");
+                    col.Field(x => x.SerNo).Title("操作功能").Render("operateFormatter").Width("15%");
+
+                }
+                ).AddProperty("id", "queryTable")
+                .AddProperty("class", "table table-striped table-bordered  table-hover text-center")
+                .Paging(true)
+                .Processing(true)
+                .Destroy(true)
+                .ServerSide(true)
+                .AutoWidth(false)
+                .Searching(false)
+                .Ordering(false)
+                .PageLength(10)
+                .LengthChange(true)
+                //.LengthMenu("lengthMenuList")
+                .Language(new PSTFrame.MVC.Helper.Table.DataTablesLanguage { Url = "../../Scripts/datatables-zh-TW.js", ZeroRecords = "沒有符合的結果" })
+                .Ajax(new PSTFrame.MVC.Helper.Table.DataTablesAjax
+                {
+                    Method = "post",
+                    Url = Url.Content("~/Cle/WasteCar/Query"),
+                    Data = "ajaxParam",
+
+                })
+        .ToHtml()
+
+    )
+
+</div>

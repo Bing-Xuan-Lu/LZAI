@@ -1,0 +1,40 @@
+﻿@model LZAIMonitor.Areas.Cle.Models.AuditEvent.AuditEventViewModel
+@{    ViewBag.Title = "稽核記錄";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+
+@section scripts {
+    @Styles.Render("~/Content/DataTableCss")
+    @Scripts.Render("~/bundles/DataTableJs")
+    <link href="~/Content/FormStyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+         var UrlDownload = '@Url.Action("Download")';
+    </script>
+    @*<<<<<<<所有的JS請寫在這邊*@
+    <script src="~/Scripts/Views/Cle/AuditEvent/CAuditEvent10100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+}
+
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;">
+    <h2 class="title">
+        <span>
+            稽核記錄
+        </span>
+    </h2>
+    @using (Html.BeginForm("Query", "AuditEvent", FormMethod.Post, new
+    {
+        id = "QueryForm",
+        @novalidate = "",
+        autocomplete = "off",
+        onsubmit = "return false;"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        {
+            Html.RenderPartial("AuditEvent101F0Partial", Model.QueryFilter);
+        }
+        {
+            Html.RenderPartial("AuditEvent10110Partial", Model.DataList);
+        }
+    }
+</div>

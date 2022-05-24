@@ -1,0 +1,541 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LZAIMonitor</name>
+    </assembly>
+    <members>
+        <member name="M:LZAIMonitor.SwaggerConfig.GetXmlCommentsPath">
+            <summary>
+            實作XmlSwagger讀檔(建置時輸出「XML 文件檔案」)
+            App_Data\TGOSGisWeb.xml
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Cle.Controllers.GrantInfoController.#ctor(LZAI.Service.IService.ICleGrantInfoService)">
+            <summary>
+            
+            </summary>
+            <param name="CleWasteCarService"></param>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Cle.Models.GrantInfo.GrantInfoViewModel.QueryFilter">
+            <summary>
+            查詢條件
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Cle.Models.GrantInfo.GrantInfoViewModel.DataList">
+            <summary>
+            查詢結果
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.Query(LZAIMonitor.Areas.Mgr.Models.FuncViewModel.Filter)">
+            <summary>
+            查詢
+            </summary>
+            <param name="queryFilter">The query filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.Func201A0">
+            <summary>
+            新增
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.Insert(LZAI.MgrLib.Model.DB.MgrFunc,System.Web.Mvc.FormCollection)">
+            <summary>
+            新增儲存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.Func201E0(System.Int32)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.Update(LZAI.MgrLib.Model.DB.MgrFunc,System.Web.Mvc.FormCollection)">
+            <summary>
+            Update
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.Delete(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="serId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Func.FuncController.SetSelectListToViewBag">
+            <summary>
+            設定頁面要選擇的項目List
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Group.GroupController.Query(LZAIMonitor.Areas.Mgr.Models.GroupViewModel.Filter)">
+            <summary>
+            查詢
+            </summary>
+            <param name="queryFilter">The query filter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Group.GroupController.Group201A0">
+            <summary>
+            新增
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Group.GroupController.Insert(LZAI.MgrLib.Model.DB.MgrGroup)">
+            <summary>
+            Insert
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Group.GroupController.Group201E0(System.Int32)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Group.GroupController.Update(LZAI.MgrLib.Model.DB.MgrGroup)">
+            <summary>
+            修改儲存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Group.GroupController.Delete(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="serId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.GrpFunc201A0(System.String)">
+            <summary>
+            新增
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.Insert(LZAI.MgrLib.Model.DB.MgrGrpFunc)">
+            <summary>
+            新增儲存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.GrpFunc201E0(System.Int32)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.Update(LZAI.MgrLib.Model.DB.MgrGrpFunc)">
+            <summary>
+            編輯儲存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.Delete(System.Int32)">
+            <summary>
+            刪除
+            </summary>
+            <param name="serId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.GetFuncParam(System.Int32)">
+            <summary>
+            其他權限判斷(ajax)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.GrpFunc.GrpFuncController.SetSelectListToViewBag">
+            <summary>
+            設定頁面要選擇的項目List
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.OrgUnit.OrgUnitController.Query(LZAIMonitor.Areas.Mgr.Models.OrgUnit.OrgUnitViewModel)">
+            <summary>
+            條件查詢
+            </summary>
+            <param name="Unitmodel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.OrgUnit.OrgUnitController.OrgUnit201A0">
+            <summary>
+            新增
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.OrgUnit.OrgUnitController.OrgUnit201E0(System.Int32)">
+            <summary>
+            修改
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.OrgUnit.OrgUnitController.Insert(System.String)">
+            <summary>
+            新增儲存
+            </summary>
+            <param name="UnitName"></param>
+            <returns></returns>
+            注意 Entity DB Key必須加[Updatable(false,false)]
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.OrgUnit.OrgUnitController.Update(LZAI.MgrLib.Model.DB.MgrOrgUnit)">
+            <summary>
+            編輯儲存
+            </summary>
+            <param name="UnitName"></param>
+            <returns></returns>
+             注意 Entity 無須Update欄位需加 [Updatable(ture,false)]
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.OrgUnit.OrgUnitController.Delete(System.Int32)">
+            <summary>
+            刪除
+            </summary>
+            <param name="UnitName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.Query(LZAIMonitor.Areas.Mgr.Models.Users.UsersViewModel.Filter)">
+            <summary>
+            查詢
+            </summary>
+            <param name=""></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.QueryNoSubUnit(LZAIMonitor.Areas.Mgr.Models.Users.UsersViewModel.Filter)">
+            <summary>
+            查詢 (不含子單位)
+            </summary>
+            <param name=""></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.Insert(System.Web.Mvc.FormCollection,LZAIMonitor.Areas.Mgr.Models.Users.UsersDocModel)">
+            <summary>
+            新增人員
+            </summary>
+            <param name="collection"></param>
+            <param name="DocModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.Update(System.Web.Mvc.FormCollection,LZAIMonitor.Areas.Mgr.Models.Users.UsersDocModel)">
+            <summary>
+            更新人員
+            </summary>
+            <param name="collection"></param>
+            <param name="DocModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.SetSelectListToViewBag(System.String[])">
+            <summary>
+            設定頁面要選擇的項目List
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.Users10200">
+            <summary>
+            修改密碼頁
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Areas.Mgr.Controllers.Users.UsersController.AlterPwd(System.Web.Mvc.FormCollection,LZAI.MgrLib.Model.DB.MgrUsers)">
+            <summary>
+            修改密碼 儲存
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.FuncViewModel.QueryFilter">
+            <summary>
+            查詢條件
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.FuncViewModel.DataList">
+            <summary>
+            查詢結果
+            </summary>
+        </member>
+        <member name="T:LZAIMonitor.Areas.Mgr.Models.Node">
+            <summary>
+            Tree類
+            </summary>
+        </member>
+        <member name="F:LZAIMonitor.Areas.Mgr.Models.Node.state">
+            <summary>
+            public bool checked;
+            public bool disabled;
+            public bool expanded;
+            public bool selected;
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.GroupViewModel.QueryFilter">
+            <summary>
+            查詢條件
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.GroupViewModel.DataList">
+            <summary>
+            查詢結果
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.GrpFuncViewModel.QueryFilter">
+            <summary>
+            查詢條件
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.GrpFuncViewModel.DataList">
+            <summary>
+            查詢結果
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.Users.UsersViewModel.UnitList">
+            <summary>
+            單位下拉選項
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.Users.UsersViewModel.GroupList">
+            <summary>
+            權限選項
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.Users.UsersViewModel.QueryFilter">
+            <summary>
+            查詢條件
+            </summary>
+        </member>
+        <member name="P:LZAIMonitor.Areas.Mgr.Models.Users.UsersViewModel.DataList">
+            <summary>
+            查詢結果
+            </summary>
+        </member>
+        <member name="T:LZAIMonitor.Areas.Mgr.Models.Users.UsersDocModel">
+            <summary>
+            使用者(編輯)文件Model
+            </summary>
+        </member>
+        <member name="T:LZAIMonitor.Controllers.CarWatchController">
+            <summary>
+            車牌辨識API
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.CarWatchController.#ctor(LZAI.Service.IService.ICarWatchEventService,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            車牌辨識API
+            </summary>
+            <param name="carWatchEventService"></param>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.CarWatchController.GetCarWatchEvent">
+            <summary>
+            取得車牌辨識結果
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.Login">
+            <summary>
+            登入頁
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.Index">
+            <summary>
+            首頁
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.Login(PSTFrame.MVC.Model.LoginViewModel)">
+            <summary>
+            登入
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.SignOn(System.String,System.String,System.String)">
+            <summary>
+            將登入資訊寫到FormAuthentication
+            </summary>
+            <param name="CardNumber"></param>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.LogLoginInfo(System.Int32)">
+            <summary>
+            記錄登入、登出
+            </summary>
+            <param name="LoginStatusId">0：登入, 4：登出</param>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.Logout">
+            <summary>
+            登出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.Forget">
+            <summary>
+            忘記密碼頁
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.ForgetPass(System.Web.Mvc.FormCollection)">
+            <summary>
+            忘記密碼 -- 確定
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.HomeController.VerificationCode">
+            <summary>
+            圖片驗證碼
+            TODO:要換我不是機器人
+            </summary>
+        </member>
+        <member name="T:LZAIMonitor.Controllers.MonitorController">
+            <summary>
+            監控平台
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.MonitorController.#ctor(LZAI.Service.IService.ICleWasteCarService)">
+            <summary>
+            
+            </summary>
+            <param name="CleWasteCarService"></param>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.MonitorController.CarWatch">
+            <summary>
+            車道監視
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.MonitorController.Realtime">
+            <summary>
+            即時軌跡
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.MonitorController.History">
+            <summary>
+            歷史軌跡
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.ReadSettings">
+            <summary>
+            讀取web.config所有的AppKey 到 Dictionary
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.CreateDbContext">
+            <summary>
+            建立DB連線
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetJsonDDLarray(System.String,System.String,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="jsonFile">DDLJson檔名</param>
+            <param name="condition">條件</param>
+            <param name="defaultValue">預設勾選項目</param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetJsonDDL(System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="jsonFile">DDLJson檔名</param>
+            <param name="condition">條件</param>
+            <param name="defaultValue">預設勾選項目</param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetJsonDDL(System.String,System.String,System.String,System.String,System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="jsonFile">DDLJson檔名</param>
+            <param name="condition">條件</param>
+            <param name="defaultValue">預設勾選項目</param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetCity(System.String,System.String,System.String)">
+            <summary>
+            取得縣市
+            </summary>
+            <param name="DefaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetDistrict(System.String,System.String)">
+            <summary>
+            取得行政區
+            </summary>
+            <param name="CityNo"></param>
+            <param name="DefaultValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetWasteItemByCodeWaste(System.String,System.Boolean)">
+            <summary>
+            組出廢棄物種類及中碼
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:LZAIMonitor.Controllers.WebBaseController.TokenCryptor">
+            <summary>
+            加密器
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetUrlTokenString(System.String,System.Boolean,System.Int32)">
+            <summary>
+            將下載檔案資訊封裝在token
+            </summary>
+            <param name="data">完整檔案路徑及檔名</param>
+            <param name="isEncrypted">檔案是否加密</param>
+            <param name="timeout">幾秒後Timeout</param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.IsTokenValid(PSTFrame.MVC.Gear.IToken)">
+            <summary>
+            判斷token是否還有效
+            </summary>
+            <param name="Token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.SaveFile(System.Web.HttpPostedFileBase,System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="file">上傳檔案</param>
+            <param name="filePath">檔案絕對路徑</param>
+            <param name="newFileName">新檔名，若不提供以原檔名儲存</param>
+            <param name="IsEncrypt">true, 加密後檔名：檔名.副檔名.aes，原檔名檔案會刪除</param>
+            <param name="encryptPass">加密金鑰</param>
+            <returns>Message.ReturnData 回傳實際儲存檔案完整路徑及檔名</returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.GetFile(System.String,System.String,System.Boolean,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="fullFileName">完整路徑及檔名</param>
+            <param name="IsEncrypt"></param>
+            <param name="encryptPass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.DeleteDueFile(System.String,System.Int32)">
+            <summary>
+            刪除暫存檔
+            </summary>
+            <param name="sourcePath"></param>
+            <param name="Timeout"></param>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.CopyDocument(System.String,System.String,System.String)">
+            <summary>
+            複製副本
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LZAIMonitor.Controllers.WebBaseController.CopyWordFile(System.String,System.String)">
+            <summary>
+            複製檔案
+            </summary>
+            <param name="fromWordFile"></param>
+            <param name="toWordFile"></param>
+        </member>
+        <member name="T:LZAIMonitor.Hubs.CarWatchHub">
+            <summary>
+            車牌辨識監聽器
+            </summary>
+        </member>
+        <member name="M:LZAIMonitor.Task.AlarmRunner.RunAlarm">
+            <summary>
+            執行排程
+            </summary>
+        </member>
+    </members>
+</doc>

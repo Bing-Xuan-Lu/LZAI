@@ -1,0 +1,25 @@
+﻿<div class="row" id="Exhibition">
+    <div class="mb-sm-3">
+        <treeselect :multiple="true"
+                    :load-options="loadOptions"
+                    :options="options"
+                    :auto-load-root-options="false"
+                    :clearable="true"
+                    :open-on-click="true"
+                    :open-on-focus="true"
+                    :clear-on-select="true"
+                    :close-on-select="true"
+                    :append-to-body="true"
+                    placeholder="請選擇事業點"
+                    value-format="object"
+                    v-model="value" />
+    </div>
+    @*<pre class="result">{{ value.map(item => ({id : item.id,IsCity : item.IsCity})) }}</pre>*@
+    <div class="text-center">
+        <button class="btn btn-success" v-on:click="ShowCleInfoExhibition()" v-bind:class="{'disabled' : value.length === 0 }">展示</button>
+    </div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+﻿
+@{
+    Layout = null;
+}
+@Styles.Render("~/Content/bootstrap")
+@Styles.Render("~/Content/sweetalert2Css")
+@Styles.Render("~/Content/Select2")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/Select2")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/Common")
+@Scripts.Render("~/bundles/sweetalert2Js")
+
+
+@RenderSection("scripts", required: true)
+<style>
+    .form-control::-webkit-input-placeholder {
+        color: #d7d7d5;
+        opacity: 1;
+    }
+
+    .form-control::-moz-placeholder {
+        color: #d7d7d5;
+        opacity: 1;
+    }
+
+    .form-control:-ms-input-placeholder {
+        color: #d7d7d5;
+        opacity: 1;
+    }
+
+    .form-control::-ms-input-placeholder {
+        color: #d7d7d5;
+        opacity: 1;
+    }
+
+    ::placeholder {
+        color: #d7d7d5;
+        opacity: 1;
+    }
+
+    .ui-widget button {
+        font-family: 'Microsoft JhengHei';
+    }
+</style>
+<script>
+    $('label[required]').after('<span style="color:red">*</span>');
+</script>
+@*<div class="content">
+    </div>*@
+<div class="content">
+
+    @RenderBody()
+
+</div>
+
+<div style="text-align:center">
+    @RenderSection("buttons", required: true)
+</div>

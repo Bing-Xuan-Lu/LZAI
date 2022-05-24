@@ -1,0 +1,45 @@
+﻿@using LZAI.Model.DB
+@model List<Vw_AuditEvent>
+
+
+
+<div class="pt-2">
+    @(Html.DataTableFor<Vw_AuditEvent>
+    ().Columns(
+    col =>
+    {
+        col.Field(x => x.AuditEventId);
+        col.Field(x => x.Account);
+        col.Field(x => x.UserName);
+        col.Field(x => x.ClientIPAddress);
+        col.Field(x => x.FuncName);
+        col.Field(x => x.ActionType);
+        col.Field(x => x.Action);
+        col.Field(x => x.EventDateTime).Render("dateTypeToyyyyMMdd").Width("15%");
+
+    }
+    ).AddProperty("id", "queryTable")
+    .AddProperty("class", "table table-striped table-bordered table-hover  text-center")
+    .Paging(true)
+    .Processing(true)
+    .Destroy(true)
+    .ServerSide(true)
+    .AutoWidth(false)
+    .Searching(false)
+    .Ordering(false)
+    .PageLength(10)
+    .LengthChange(true)
+    //.LengthMenu("lengthMenuList")
+    .Language(new PSTFrame.MVC.Helper.Table.DataTablesLanguage { Url = "../../Scripts/datatables-zh-TW.js", ZeroRecords = "沒有符合的結果" })
+    .Ajax(new PSTFrame.MVC.Helper.Table.DataTablesAjax
+    {
+        Method = "post",
+        Url = Url.Content("~/Cle/AuditEvent/Query"),
+        Data = "ajaxParam",
+
+    })
+    .ToHtml()
+
+    )
+
+</div>

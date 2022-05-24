@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Forget";
+    Layout = "~/Views/Shared/_DocumentDialogLayout.cshtml";
+}
+@section scripts {
+    <script src="~/Scripts/Views/Home/Forget.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+    <script>
+        var UrlForGet = '@Url.Action("ForgetPass")'
+        var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var VCode ='@Url.Action("VerificationCode")';
+    </script>
+}
+@section buttons{
+    <input class="btn btn-success" type="button" id="btnForget" value="確定" onclick="ForGet()" />
+   
+    <button onclick="window.parent.Swal.close();" class="btn btn-secondary" style="background-image:none !important;">取消</button>
+}
+<section style="max-width:1024px;background-color:rgba(255,255,255,.5);margin:2rem auto;padding:1rem 3rem;border-radius:1.5rem;">
+    @*<h2 class="title">
+        <span>忘記密碼</span>
+    </h2>*@
+    @using (Html.BeginForm("ForgetPass", "Home", FormMethod.Post, new { @id = "DocForm", autocomplete = "off" }))
+    {
+        @Html.AntiForgeryToken();
+        <fieldset>
+            <div style="background:white;padding:2rem;border-radius:1rem;font-size:1.2rem">
+                <div class="">
+                    <span>帳號：</span>
+                    @Html.TextBox("ForgetAccount", null, new { placeholder = "請輸入帳號", @class = "form-control" })
+                    <span>信箱：</span>
+                    <input type="text" name="Email" id="Email" class="form-control" value="@TempData["Email"]" /> 
+                    <span style="color:red;font-weight:bold;">@TempData["ErrorEmail"]</span>
+                    <span> 驗證碼：</span>
+                    @Html.TextBox("InputCode", null, new { placeholder = "請輸入驗證碼", @class = "form-control" })<br />
+                    <span style="color:red;font-weight:bold;">@TempData["InputCode"]</span><br />
+                    <img src="@Url.Action("VerificationCode")" alt="驗證碼" name="imgCode" id="imgCode" />
+                    <input type="button" class="btn btn-primary" onclick="Code();" value="重新取得驗證碼" />
+                   
+                    <span style="color:red;font-weight:bold;">@TempData["Error"]</span>
+                </div>
+            </div>
+        </fieldset>
+
+    }
+
+
+</section>

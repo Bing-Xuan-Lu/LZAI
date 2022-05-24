@@ -1,0 +1,46 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models
+@model GroupViewModel
+@{
+    ViewBag.Title = "群組管理";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+
+@section scripts {
+    @Styles.Render("~/Content/BootstrapTableCss")
+    @Scripts.Render("~/bundles/BoostrapTableJs")
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlEdit =  '@Url.Action("Group201E0")';
+        var UrlDelete = '@Url.Action("Delete")';
+        var UrlGotoParam = '@Url.Action("GotoParam")';
+        var UrlGrpFunc = '@Url.Action("GrpFunc10100", "GrpFunc")';
+        var UrlInsert =  '@Url.Action("Group201A0")';
+    </script>
+    <script src="~/Scripts/Views/Mgr/Group/Group10100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+    @*<<<<<<<所有的JS請寫在這邊*@
+
+}
+
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;" id="GrpFunc">
+    <h2 class="title">
+        <span>
+            群組管理功能
+        </span>
+    </h2>
+    @using (Html.BeginForm("Query", "Group", FormMethod.Post, new
+    {
+        id = "QueryForm",
+        @novalidate = "",
+        autocomplete = "off",
+        onsubmit = "return false;"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        {
+            Html.RenderPartial("Group101F0Partial", Model.QueryFilter);
+        }
+        {
+            Html.RenderPartial("Group10110Partial", Model.DataList);
+        }
+    }
+</div>

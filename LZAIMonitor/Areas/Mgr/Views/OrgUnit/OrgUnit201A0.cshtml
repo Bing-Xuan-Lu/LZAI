@@ -1,0 +1,34 @@
+﻿@using LZAI.MgrLib.Model.DB
+
+@model MgrOrgUnit
+@{
+    ViewBag.Title = "新增單位";
+    Layout = "~/Views/Shared/_DocumentDialogLayout.cshtml";
+}
+@section scripts {
+    <script src="~/Scripts/Views/Mgr/OrgUnit/OrgUnit201A0.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+    var UrlInsert = '@Url.Action("Insert")';
+    </script>
+}
+<div style="margin:0 auto;width:80%;background-color:white;padding:20px;border-radius:1.5rem;max-width:1024px">
+    @*<h2 class="title">
+        <span>
+            新增單位
+        </span>
+    </h2>*@
+
+    @using (Html.BeginForm("Insert", "OrgUnit", FormMethod.Post, new { id = "InsertDocForm", @novalidate = "", autocomplete = "off", onsubmit = "return false;" }))
+    {
+        @Html.AntiForgeryToken(); @*注意!! 未使用Ajax傳資料記得使用此Token*@
+        { Html.RenderPartial("OrgUnit20100Partial", Model); }
+
+    }
+    @section buttons{
+        <button id="btnOrgUnitInsert" class="btn btn-primary" style="background-image:none !important;">儲存</button>
+        <button onclick="window.parent.Swal.close();" class="btn btn-secondary" style="background-image:none !important;">取消</button>
+    }
+</div>
+
+

@@ -1,0 +1,99 @@
+﻿@using PSTFrame.MVC.Model
+
+@model LZAIMonitor.Areas.Mgr.Models.Users.UsersDocModel
+@{
+    ViewBag.Title = "Users20100Partial";
+    Layout = null;
+}
+@section scripts {}
+
+<div class="hidden">
+
+    @Html.HiddenFor(x => x.mgrUsers.UserId)
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Account, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Account, new { @class = "form-control", @placeholder = "英數不能超過10碼", maxlength = "10" })
+            <label></label>
+        </div>
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.UserName, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.UserName, new { @class = "form-control", maxlength = "8" })
+            <label>　</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Department, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Department, new { @class = "form-control"})
+            <label></label>
+        </div>
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Job, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Job, new { @class = "form-control"})
+            <label>　</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Tel, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Tel, new { @class = "form-control", @placeholder = "03-3860569#000" })
+            <label>　</label>
+        </div>
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.PhoneNumber, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.PhoneNumber, new { @class = "form-control", @placeholder = "0912-345678" })
+            <label>　</label>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Email, new { @required = "" })
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(x => x.mgrUsers.Email, new { @class = "form-control", @placeholder = "abc@gmail.com" })
+            <label>　</label>
+        </div>
+    </div>
+    <div class="row pb-3">
+        <div class="col-2">
+            @Html.Label("群組", new { @required = "" })
+        </div>
+        <div class="col-10">
+            @Html.RadioButtonListFor(x => x.mgrGroup.GroupId, (IEnumerable<SelectListItem>)ViewBag.GroupList,
+                null, Alignment.Horizontal, 3)
+            @Html.Hidden("checkValue")
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            @Html.Label("單位", new { @required = "" })
+        </div>
+        <div class="col-10">
+            @Html.DropDownListFor(x => x.mgrUsers.UnitId, (IEnumerable<SelectListItem>
+                 )ViewBag.UnitList, "請選擇", new
+                      {
+                          @class = "form-control"
+                      })
+            <label></label>
+        </div>
+    </div>
+</div>
+

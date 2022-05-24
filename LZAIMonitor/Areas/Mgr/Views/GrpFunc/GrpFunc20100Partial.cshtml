@@ -1,0 +1,58 @@
+﻿@using LZAI.MgrLib.Model.DB
+@model MgrGrpFunc
+
+@section scripts {
+}
+
+<div class="hidden">
+    @Html.HiddenFor(x => x.GrpFuncId)
+    @Html.HiddenFor(x => x.GroupId)
+</div>
+
+<div class="container">
+    @Html.ValidationSummary(true)
+    <div class="form-group row">
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.Label("功能項目")
+        </div>
+        <div class="col-9">
+            @Html.DropDownListFor(x => x.FuncId, (IEnumerable<SelectListItem>)ViewBag.GetFuncs, "請選擇"
+                  , new { @class = "browser-default custom-select", })
+            @Html.ValidationMessageFor(x => x.FuncId, "", new { @class = "help-block" })
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.Label("權限")
+        </div>
+        <div class="col-9">
+            <label>
+                @Html.CheckBoxFor(x => x.IsAdd)
+                新增權限
+            </label>
+            <label>
+                @Html.CheckBoxFor(x => x.IsModify)
+                修改權限
+            </label>
+            <label>
+                @Html.CheckBoxFor(x => x.IsCancel)
+                刪除權限
+            </label>
+            <label>
+                @Html.CheckBoxFor(x => x.IsQuery)
+                查詢權限
+            </label>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-9"  id="FuncParamList">
+
+        </div>
+        <div id="FuncEditList">
+            @Html.Hidden("_IsOthPerm1", Model.IsOthPerm1,new { @id = "_IsOthPerm1" })
+            @Html.Hidden("_IsOthPerm2" , Model.IsOthPerm2, new { @id = "_IsOthPerm2" })
+            @Html.Hidden("_IsOthPerm3", Model.IsOthPerm3, new { @id = "_IsOthPerm3" })
+            @Html.Hidden("_IsOthPerm4", Model.IsOthPerm4, new { @id = "_IsOthPerm4" })
+            @Html.Hidden("_IsOthPerm5", Model.IsOthPerm5, new { @id = "_IsOthPerm5" })
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@using LZAI.MgrLib.Model.DB
+
+@model List<VwMgrUsers>
+
+
+    @(Html.TableFor<VwMgrUsers>().Columns(
+                                            col =>
+                                            {
+                                                col.Field(x => x.UserName)
+                                                .AddProperty("data-width", "20%")
+                                                .AddProperty("data-sortable", "true");
+                                                col.Field(x => x.Account)
+                                                .AddProperty("data-width", "20%")
+                                                .AddProperty("data-sortable", "true");
+                                                col.Field(x => x.GroupName)
+                                                .AddProperty("data-width", "20%")
+                                                .AddProperty("data-sortable", "true");
+                                                col.Field(x => x.UnitName)
+                                                .AddProperty("data-width", "20%")
+                                                .AddProperty("data-sortable", "true");
+                                                col.Field(x => x).Title("操作功能")
+                                                .AddProperty("data-formatter", "operateFormatter")
+                                                .AddProperty("data-width", "20%");
+                                            }
+                                        ).DataSource(Model)
+                                      .AddProperty("id", "table")
+                .AddProperty("data-ajax", "ajaxRequest")
+                .AddProperty("data-toggle", "table")
+                .AddProperty("data-height", "650")
+                .AddProperty("data-pagination", "true")
+                .AddProperty("data-pagination-pre-text", "上一頁")
+                .AddProperty("data-pagination-next-text", "下一頁")
+                .AddProperty("data-locale", "zh-TW")
+                .AddProperty("data-page-size", "20")
+                .AddProperty("data-page-list", "[20]")
+                .AddProperty("data-click-to-select", "true")
+                .AddProperty("data-sort-class", "table-active")
+                .AddProperty("data-toolbar", "#toolbar")
+                .AddProperty("class", "table table-striped table-hover table-bordered  text-center ")
+                .Render()
+
+    )
+
+

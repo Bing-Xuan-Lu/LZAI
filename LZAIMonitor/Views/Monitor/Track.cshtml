@@ -1,0 +1,78 @@
+﻿@using System.Configuration
+@{
+    ViewBag.Title = "歷史軌跡";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* OpenLayer v4 Nuget css&Js *@
+@*<link href="~/Scripts/ol.css" rel="stylesheet" />
+    <script src="~/Scripts/ol.js"></script>
+    <script src="~/Scripts/Common/Map/OpenStreet/json5.js"></script>
+    <script src="~/Scripts/Common/Map/OpenStreet/TGAgent_OL.js"></script>
+    <script src="~/Scripts/Common/Map/OpenStreet/proj4.js"></script>
+    <script src="~/Scripts/Common/Map/OpenStreet/OpenLayerMap.js"
+            data-id="@ConfigurationManager.AppSettings["TGOSMapAppId"]"
+            data-key="@ConfigurationManager.AppSettings["TGOSMapAppKey"]"></script>*@
+
+@* TGOS *@
+<link href="~/Content/TGMap/Map.css" rel="stylesheet" />
+<link href="~/Content/vue-treeselect.min.css" rel="stylesheet" />
+<script src="https://api.tgos.tw/TGOS_API/tgos?ver=2&AppID=@ConfigurationManager.AppSettings["TGOSMapAppId"]&APIKey=@ConfigurationManager.AppSettings["TGOSMapAppKey"]"
+        charset="utf-8"></script>
+<script src="~/Scripts/vue.js"></script>
+<script src="~/Scripts/Common/Map/Map.js"></script>
+<script src="~/Scripts/Common/Map/MapTools.js"></script>
+@Styles.Render("~/Content/BootstrapTableCss")
+@Scripts.Render("~/bundles/BoostrapTableJs")
+<script src="~/Scripts/BootstrapTable/bootstrap-table-vue.min.js"></script>
+<script src="~/Scripts/vue-treeselect.umd.js"></script>
+<script type="module" src="~/Scripts/Views/Monitor/Track.js"></script>
+
+<script>
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+</script>
+<div class="row">
+    <div class="col-sm-4 overflow-scroll" style="height: 50em;">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        即時軌跡
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @{ Html.RenderPartial("TrackRealTimePartial", null); }
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        歷史軌跡
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @{ Html.RenderPartial("TrackHistoryPartial", null); }
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        圖層展示
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        @{ Html.RenderPartial("TrackExhibitionPartial", null); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-8 bg-success bg-opacity-10 position-relative" style="height: 50em;">
+        @{ Html.RenderPartial("TrackMapPartial", null); }
+    </div>
+</div>

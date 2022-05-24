@@ -1,0 +1,52 @@
+﻿@model LZAIMonitor.Areas.Cle.Models.CarWatchRecord.CarWatchRecordModel.Filter
+
+<div>
+    @Html.ValidationSummary(true)
+    <div class="form-group row">
+        <div class="row  pb-4">
+            <div class="col-2 mt-2">
+                @Html.LabelFor(x => x.CARNum)
+            </div>
+            <div class="col-4 mt-2">
+                @Html.DropDownListFor(x => x.CARNum, (IEnumerable<SelectListItem>)ViewBag.CleCar, null, new { @class = "form-control" })
+            </div>
+            <div class="col-2 mt-2">
+                @Html.LabelFor(x => x.IsSetGPS)
+            </div>
+            <div class="col-4 mt-2">
+                @Html.RadioButtonFor(x => x.IsSetGPS, -1, new { @checked = "checked" }) 全部
+                @Html.RadioButtonFor(x => x.IsSetGPS, 1, new { @class = "" }) 列管
+                @Html.RadioButtonFor(x => x.IsSetGPS, 0, new { @class = "" }) 非列管
+                @Html.ValidationMessageFor(x => x.IsSetGPS, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-2 mt-2">
+                @Html.LabelFor(x => x.Fac_No)
+            </div>
+            <div class="col-4 mt-2">
+                @Html.DropDownListFor(x => x.Fac_No, (IEnumerable<SelectListItem>)ViewBag.CleFac, null, new { @class = "form-control" })
+            </div>
+            <div class="col-2 mt-2">
+                @Html.LabelFor(x => x.SDate)
+            </div>
+            <div class="col-4 mt-2">
+                @Html.TextBoxFor(x => x.SDate) ~ @Html.TextBoxFor(x => x.EDate)
+            </div>
+            <div class="col-2 mt-2">
+                @Html.LabelFor(x => x.Fac_Name)
+            </div>
+            <div class="col-4 mt-2">
+                @Html.DropDownListFor(x => x.Fac_Name, (IEnumerable<SelectListItem>)ViewBag.CleFacN, null, new { @class = "form-control" })
+            </div>
+            <div class="col-2 mt-2">
+                @Html.LabelFor(x => x.RegionId)
+            </div>
+            <div class="col-4 mt-2">
+                @Html.DropDownListFor(x => x.RegionId, (IEnumerable<SelectListItem>)ViewBag.RegionId, null, new { @class = "form-control" })
+            </div>
+        </div>
+        <br />
+        <button type="button" id="Query" onclick="tableDraw(queryTable, 'QueryForm');" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;" class="btn btn-primary">查詢</button>
+        <button type="button" id="Clear" onclick="Download();" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;" class="btn btn-secondary">下載</button>
+    </div>
+</div>
+

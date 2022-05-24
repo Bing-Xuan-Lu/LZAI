@@ -1,0 +1,42 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models.Users
+
+@model UsersViewModel.Filter
+
+<div class="container">
+    <div class="form-group row">
+        <div class="col-md-2">
+            @Html.Label("使用者姓名")
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-2">
+            @Html.Label("帳號")
+        </div>
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Account, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-2">
+            @Html.Label("群組名稱")
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.GroupName, (IEnumerable<SelectListItem>)ViewBag.GroupList, "全部"
+                ,new { @class = "form-control" })
+        </div>
+        <div class="col-md-2">
+            @Html.Label("單位名稱")
+        </div>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.UnitId, (IEnumerable<SelectListItem>)ViewBag.UnitList ,"全部"
+                , new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <button type="button" id="Query" onclick="Keyword()" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;" class="btn btn-primary">查詢</button>
+        <button type="button" id="Insert" onclick="Sweet2addDialog('新增功能',UrlInsert,900,450)" class="btn btn-success" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;">新增</button>
+    </div>
+</div>
+

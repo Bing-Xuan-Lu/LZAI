@@ -1,0 +1,317 @@
+html, body {
+    font-family: "·L³n¥¿¶ÂÅé", "Microsoft JhengHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#TGMap, #form1 {
+    height: 100%;
+}
+
+/*Navbar*/
+.animate {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-fixed-left {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px;
+}
+
+.navbar-minimal {
+    width: 60px;
+    min-height: 60px;
+    max-height: 100%;
+    background-color: rgb(51, 51, 51);
+    background-color: rgba(51, 51, 51, 0.75);
+    border-width: 0px;
+    z-index: 1000;
+}
+
+    .navbar-minimal > .navbar-toggler {
+        position: relative;
+        min-height: 60px;
+        border-bottom: 1px solid rgb(81, 81, 81);
+        z-index: 100;
+        cursor: pointer;
+    }
+
+        .navbar-minimal.open > .navbar-toggler,
+        .navbar-minimal > .navbar-toggler:hover {
+            background-color: rgb(158, 202, 59);
+        }
+
+        .navbar-minimal > .navbar-toggler > span {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            margin: -8px -8px 0 0;
+            width: 16px;
+            height: 16px;
+            background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE2LjIuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIxNnB4IiBoZWlnaHQ9IjMycHgiIHZpZXdCb3g9IjAgMCAxNiAzMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTYgMzIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTEsN2gxNGMwLjU1MiwwLDEsMC40NDgsMSwxcy0wLjQ0OCwxLTEsMUgxQzAuNDQ4LDksMCw4LjU1MiwwLDgKCVMwLjQ0OCw3LDEsN3oiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xLDEyaDE0YzAuNTUyLDAsMSwwLjQ0OCwxLDFzLTAuNDQ4LDEtMSwxSDFjLTAuNTUyLDAtMS0wLjQ0OC0xLTEKCVMwLjQ0OCwxMiwxLDEyeiIvPgo8cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI0ZGRkZGRiIgZD0iTTEsMmgxNGMwLjU1MiwwLDEsMC40NDgsMSwxcy0wLjQ0OCwxLTEsMUgxQzAuNDQ4LDQsMCwzLjU1MiwwLDMKCVMwLjQ0OCwyLDEsMnoiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xLjMzLDI4Ljk3bDExLjY0LTExLjY0YzAuNDU5LTAuNDU5LDEuMjA0LTAuNDU5LDEuNjYzLDAKCWMwLjQ1OSwwLjQ1OSwwLjQ1OSwxLjIwNCwwLDEuNjYzTDIuOTkzLDMwLjYzM2MtMC40NTksMC40NTktMS4yMDQsMC40NTktMS42NjMsMEMwLjg3MSwzMC4xNzQsMC44NzEsMjkuNDMsMS4zMywyOC45N3oiLz4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGZpbGw9IiNGRkZGRkYiIGQ9Ik0yLjk5MywxNy4zM2wxMS42NDEsMTEuNjRjMC40NTksMC40NTksMC40NTksMS4yMDQsMCwxLjY2MwoJcy0xLjIwNCwwLjQ1OS0xLjY2MywwTDEuMzMsMTguOTkzYy0wLjQ1OS0wLjQ1OS0wLjQ1OS0xLjIwNCwwLTEuNjYzQzEuNzg5LDE2Ljg3MSwyLjUzNCwxNi44NzEsMi45OTMsMTcuMzN6Ii8+Cjwvc3ZnPgo=);
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            -webkit-transition: -webkit-transform .3s ease-out 0s;
+            -moz-transition: -moz-transform .3s ease-out 0s;
+            -o-transition: -moz-transform .3s ease-out 0s;
+            -ms-transition: -ms-transform .3s ease-out 0s;
+            transition: transform .3s ease-out 0s;
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+    .navbar-minimal > .navbar-menu {
+        position: absolute;
+        top: -1000px;
+        left: 0px;
+        margin: 0px;
+        padding: 0px;
+        list-style: none;
+        z-index: 50;
+        background-color: rgb(51, 51, 51);
+        background-color: rgba(51, 51, 51, 0.8);
+    }
+
+    .navbar-minimal.open {
+        width: 320px;
+    }
+
+        .navbar-minimal.open > .navbar-toggler > span {
+            background-position: 0 -16px;
+            -webkit-transform: rotate(-180deg);
+            -moz-transform: rotate(-180deg);
+            -o-transform: rotate(-180deg);
+            -ms-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+        }
+
+        .navbar-minimal.open > .navbar-menu {
+            top: 60px;
+            width: 100%;
+            min-height: 100%;
+        }
+
+@media (min-width: 768px) {
+    .navbar-minimal.open {
+        width: 60px;
+    }
+
+        .navbar-minimal.open > .navbar-menu {
+            overflow: visible;
+        }
+}
+
+#OutTab .nav-tabs {
+    border-bottom: 2px solid #DDD;
+}
+
+    #OutTab .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        border-width: 0;
+    }
+
+    #OutTab .nav-tabs > li > a {
+        line-height: 30px;
+        width: 145px;
+        font-size: 17px;
+        font-weight: bolder;
+        padding-left: 36px;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+        background: rgb(255,255,255); /* Old browsers */
+        background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(229,229,229,1) 100%); /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(229,229,229,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+        border: none;
+        color: #666;
+    }
+
+    #OutTab .nav-tabs > li.active > a, .nav-tabs > li > a:hover {
+        border: none;
+        color: #4285F4 !important;
+        background: transparent;
+    }
+
+    #OutTab .nav-tabs > li > a::after {
+        content: "";
+        background: #4285F4;
+        height: 2px;
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        bottom: -1px;
+        transition: all 250ms ease 0s;
+        transform: scale(0);
+    }
+
+    #OutTab .nav-tabs > li.active > a::after, .nav-tabs > li:hover > a::after {
+        transform: scale(1);
+    }
+
+#OutTab .tab-nav > li > a::after {
+    background: #21527d none repeat scroll 0% 0%;
+    color: #fff;
+}
+
+#OutTab .tab-pane {
+    padding: 0;
+}
+
+#OutTab .tab-content {
+    padding: 20px;
+}
+
+#OutTab .card {
+    background: #FFF none repeat scroll 0% 0%;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.3);
+    margin-bottom: 30px;
+}
+
+#InTab .nav-tabs > li > a {
+    line-height: 15px;
+}
+
+    #InTab .nav-tabs > li > a::after {
+        content: "";
+        background: red;
+        height: 2px;
+        position: absolute;
+        width: 100%;
+        left: 0px;
+        bottom: -1px;
+        transition: all 250ms ease 0s;
+        transform: scale(0);
+    }
+
+.gismap-light-btn {
+    bottom: 1em;
+    right: 1em;
+    position: absolute;
+    background-color: transparent;
+    background-image: none;
+    border: 0;
+    outline: 0;
+    width: 48px;
+    height: 48px;
+    background: #4F565D;
+    color: #fff;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+
+    .gismap-light-btn > .fa-location-arrow {
+        line-height: 48px;
+        font-size: 20px;
+    }
+
+.gismap-erase-btn {
+    bottom: 5em;
+}
+
+    .gismap-erase-btn > span {
+        line-height: 48px;
+        font-size: 18px;
+        transform: scaleX(-1);
+        -moz-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        -ms-transform: scaleX(-1);
+    }
+
+.InfoWindowTrTitle {
+    background: #959595;
+    background: -moz-linear-gradient(top, #959595 0%, #0d0d0d 46%, #010101 50%, #0a0a0a 53%, #383838 100%, #4e4e4e 100%, #1b1b1b 100%, #383838 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#383838 100%,#4e4e4e 100%,#1b1b1b 100%,#383838 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#383838 100%,#4e4e4e 100%,#1b1b1b 100%,#383838 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#959595', endColorstr='#383838',GradientType=0 ); /* IE6-9 */
+}
+
+.InfoWindowTrContent {
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #f6f6f6 47%, #ededed 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#f6f6f6 47%,#ededed 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+}
+
+.panel-body {
+    padding-top: 0;
+}
+.panel-default > a > .panel-heading {
+    color: #333;
+    background-color: #f5f5f5;
+    border-color: #ddd;
+}
+#AddressListTable > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-bottom: 1px solid #ddd;
+    border-top: 0;
+}
+#SearchAddressDiv2 {
+    position: relative;
+}
+
+#ICONSearchClose {
+    height: 30px;
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    border-radius: 1px;
+    font-size: 37px;
+    color: #999999;
+    font-weight: 100;
+    cursor:pointer;
+}
+
+#SearchAddressDiv2::after {
+    content: "|";
+    position: absolute;
+    font-size: 20px;
+    right: 56px;
+    top: 0px;
+    border-radius: 1px;
+    font-size: 40px;
+    font-weight: 100;
+    color: #ddd;
+}
+.modal-dialog-customize-position {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+}
+
+.modal-header-red {
+    background-color: rgba(210,68,68,0.7);
+}
+.modal-header-blue {
+    background-color: rgba(0,102,204,0.7);
+}
+
+.close-size-mid {
+    font-size: 32px;
+}
+
+.modal-title-white {
+    color: #fff;
+}
+.drawingtext{
+    display: inline;
+    color: #333;
+}
+.col-sm-6 a:hover,.col-sm-6 a:focus{
+    text-decoration: none;
+}

@@ -1,0 +1,70 @@
+﻿@using System.Configuration
+@model LZAIMonitor.Areas.Cle.Models.StopRegion.StopRegionViewModel
+@{
+    ViewBag.Title = "BuildRegion";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+<style>
+    #hand_b {
+        width: 31px;
+        height: 31px;
+    }
+
+        #hand_b.selected img {
+            background-image: url(../../images/StopRegion/Bsd.png);
+        }
+
+    #placemark_b {
+        width: 31px;
+        height: 31px;
+    }
+
+        #placemark_b.selected > img {
+            content: url(../../images/StopRegion/Bmd.png);
+        }
+
+    #line_b {
+        width: 31px;
+        height: 31px;
+    }
+
+        #line_b.selected img {
+            content: url(../../images/StopRegion/Bld.png);
+        }
+
+    #shape_b {
+        width: 31px;
+        height: 31px;
+    }
+
+        #shape_b.selected img {
+            content: url(../../images/StopRegion/Bpd.png);
+        }
+</style>
+<script src="https://api.tgos.tw/TGOS_API/tgos?ver=2&AppID=@ConfigurationManager.AppSettings["TGOSMapAppId"]&APIKey=@ConfigurationManager.AppSettings["TGOSMapAppKey"]"
+        charset="utf-8"></script>
+@Styles.Render("~/Content/BootstrapTableCss")
+@Scripts.Render("~/bundles/BoostrapTableJs")
+<script src="~/Scripts/Common/Map/Map.js"></script>
+<script src="~/Scripts/Common/Map/MapTools.js"></script>
+<script src="~/Scripts/Views/Cle/StopRegion/BuildRegion.js"></script>
+<script>
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+    var UrlQuery = '@Url.Action("Query")';
+</script>
+<div class="row">
+    <h2 class="text-center border-bottom mt-sm-3 mb-sm-3">
+        <b>警示區管理</b>
+    </h2>
+</div>
+<div class="row h-auto">
+    <div class="col-sm-6">
+        @{ Html.RenderPartial("BuildRegionMapPartial", null); }
+    </div>
+    <div class="col-sm-6 overflow-scroll">
+        @{ Html.RenderPartial("BuildRegionCreatePartial", Model.DocModel); }
+        <div class="mt-sm-3">
+            @{ Html.RenderPartial("BuildRegionTbPartial", Model.StopRegionFileList); }
+        </div>
+    </div>
+</div>

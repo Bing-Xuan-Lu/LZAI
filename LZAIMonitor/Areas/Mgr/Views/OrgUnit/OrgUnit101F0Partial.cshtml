@@ -1,0 +1,14 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models.OrgUnit
+
+@model OrgUnitViewModel
+
+
+    <div>
+        <span>單位名稱</span>
+        @Html.TextBoxFor(x => x.OrgUnitFilter.Search, new { @class = "form-control" })
+        <br />
+        <button type="button" id="Query" onclick="Keyword()" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;" class="btn btn-primary">查詢</button>
+        <button type="button" id="Insert" onclick="Sweet2addDialog('新增功能',UrlInsert,900,200)" class="btn btn-success" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;">新增</button>
+
+    </div>
+

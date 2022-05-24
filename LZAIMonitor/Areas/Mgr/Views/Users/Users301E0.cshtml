@@ -1,0 +1,43 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models.Users
+
+@model UsersDocModel
+@{
+
+    ViewBag.Title = "修改人員";
+    Layout = "~/Views/Shared/_DocumentDialogLayout.cshtml";
+}
+@section scripts {
+    <script src="~/Scripts/Views/Mgr/Users/Users301E0.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+    var UrlUpdate = '@Url.Action("UpdatePersonal")';
+    </script>
+}
+<div style="margin:0 auto;width:80%;background-color:white;padding:20px;border-radius:1.5rem;max-width:1024px">
+    <h2 class="title">
+        <span>
+            個人資料維護資料
+        </span>
+    </h2>
+    @section buttons{
+        <button onclick="Update();" class="btn btn-primary" style="background-image:none !important;">修改</button>
+        <button onclick="window.parent.Swal.close();" class="btn btn-secondary" style="background-image:none !important;">取消</button>
+    }
+
+
+    @using (Html.BeginForm("UpdatePersonal", "Users", FormMethod.Post, new
+    {
+        id = "UpdateDocForm",
+        @novalidate = "",
+        autocomplete = "off",
+        onsubmit = "return false;"
+    }))
+    {
+        @Html.AntiForgeryToken(); @*注意!! 未使用Ajax傳資料記得使用此Token*@
+        {
+            Html.RenderPartial("Users30200Partial", Model);
+        }
+
+    }
+
+</div>

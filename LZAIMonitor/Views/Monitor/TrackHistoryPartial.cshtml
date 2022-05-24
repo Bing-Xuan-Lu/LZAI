@@ -1,0 +1,54 @@
+﻿<div class="row" id="History">
+    <div class="row">
+        <label class="col-sm-3" for="ddlHisPlate_no">運送車號：</label>
+        <div class="col-sm-9">
+            <select class="form-control" id="ddlHisPlate_no" required>
+                <option v-for="list in queryFilter.HisPlate_noList" :value="list.value">{{list.text}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mt-sm-3">
+        <label class="col-sm-3" for="tbxHisDate">運送日期：</label>
+        <div class="col-sm-9">
+            <input type="date" id="tbxHisDate" class="form-control" v-model="queryFilter.HisDate"/>
+        </div>
+    </div>
+    <div class="row mt-sm-3">
+        <label class="col-sm-3">運送時間：</label>
+        <div class="col-sm-4">
+            <input type="time" class="form-control" v-model="queryFilter.HisTimeStart"/>
+        </div>
+        <span class="col-sm-1">~</span>
+        <div class="col-sm-4">
+            <input type="time" class="form-control" v-model="queryFilter.HisTimeEnd"/>
+        </div>
+    </div>
+    <div class="text-center mt-sm-3">
+        <input type="button" value="查詢" class="btn btn-info" data-bs-toggle="button" v-on:click="GetCarHistory()" />
+    </div>
+    <div class="mt-sm-3">
+        <h4 class="border-bottom">車輛明細</h4>
+        <div class="row border-bottom mt-sm-3">
+            <label class="col-sm-6">前車牌號碼</label>
+            <label class="col-sm-6">{{ historyResult.HeadNo }}</label>
+        </div>
+        <div class="row border-bottom mt-sm-3">
+            <label class="col-sm-6">後車牌號碼</label>
+            <label class="col-sm-6">{{ historyResult.Plate_No }}</label>
+        </div>
+        <div class="row border-bottom mt-sm-3">
+            <label class="col-sm-6">清除機構管編</label>
+            <label class="col-sm-6">{{ historyResult.Fac_No }}</label>
+        </div>
+        <div class="row border-bottom mt-sm-3">
+            <label class="col-sm-6">清除機構名稱</label>
+            <label class="col-sm-6">{{ historyResult.Fac_Name }}</label>
+        </div>
+        <div class="row border-bottom mt-sm-3">
+            <label class="col-sm-6">軌跡詳細資料</label>
+            <label class="col-sm-6">
+                <span class="fa fal fa-book fa-2x"></span>
+            </label>
+        </div>
+    </div>
+</div>

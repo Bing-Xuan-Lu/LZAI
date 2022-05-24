@@ -1,0 +1,32 @@
+﻿@using LZAI.MgrLib.Model.DB
+
+@model MgrOrgUnit
+@{
+    ViewBag.Title = "OrgUnit20100Partial";
+    Layout = null;
+}
+@section scripts {}
+
+<div class="hidden">
+
+    @Html.HiddenFor(x=>x.OrgUnitId)
+
+</div>
+
+<div class="container">
+    <div class="row">
+
+        @Html.ValidationSummary(true)
+        <div class="col-2">
+            @Html.LabelFor(x => x.UnitName)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(x => x.UnitName, new { @class = "form-control w-100" })
+            @Html.ValidationMessageFor(x => x.UnitName, "", new { @class = "help-block" })
+        </div>
+    </div>
+
+
+
+
+

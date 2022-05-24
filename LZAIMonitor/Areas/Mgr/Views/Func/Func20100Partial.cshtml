@@ -1,0 +1,110 @@
+﻿@using LZAI.MgrLib.Model.DB
+@model MgrFunc
+
+@section scripts {
+}
+
+<div class="hidden">
+    @Html.HiddenFor(x => x.FuncId)
+</div>
+
+<div class="container">
+    @Html.ValidationSummary(true)
+    <div class="form-group row">
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.FuncName)
+        </div>
+        <div class="col-9">
+            @Html.TextBoxFor(x => x.FuncName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.FuncName, "", new { @class = "help-block" })
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.Label("基本權限")
+        </div>
+        <div class="col-9">
+            <label>
+                @Html.CheckBoxFor(x => x.IsAddFunc)
+                新增權限
+            </label>
+            <label>
+                @Html.CheckBoxFor(x => x.IsModFunc)
+                修改權限
+            </label>
+            <label>
+                @Html.CheckBoxFor(x => x.IsCanFunc)
+                刪除權限
+            </label>
+            <label>
+                @Html.CheckBoxFor(x => x.IsQueFunc)
+                查詢權限
+            </label>
+        </div>
+        <div class="col-12 text-left">
+            <h2 class="title">
+                @Html.Label("其他權限")
+            </h2>
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.IsOthPerm1)
+        </div>
+        <div class="col-9">
+            @Html.RadioButtonFor(x => x.IsOthPerm1, "false")無
+            @Html.RadioButtonFor(x => x.IsOthPerm1, "true")有
+            &nbsp;
+            @Html.Label("權限名稱：")
+            @Html.TextBoxFor(x => x.OthPerm1Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.OthPerm1Name, "", new { @class = "help-block" })
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.IsOthPerm2)
+        </div>
+        <div class="col-9">
+            @Html.RadioButtonFor(x => x.IsOthPerm2, "false")無
+            @Html.RadioButtonFor(x => x.IsOthPerm2, "true")有
+            &nbsp;
+            @Html.Label("權限名稱：")
+            @Html.TextBoxFor(x => x.OthPerm2Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.OthPerm2Name, "", new { @class = "help-block" })
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.IsOthPerm3)
+        </div>
+        <div class="col-9">
+            @Html.RadioButtonFor(x => x.IsOthPerm3, "false")無
+            @Html.RadioButtonFor(x => x.IsOthPerm3, "true")有
+            &nbsp;
+            @Html.Label("權限名稱：")
+            @Html.TextBoxFor(x => x.OthPerm3Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.OthPerm3Name, "", new { @class = "help-block" })
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.IsOthPerm4)
+        </div>
+        <div class="col-9">
+            @Html.RadioButtonFor(x => x.IsOthPerm4, "false")無
+            @Html.RadioButtonFor(x => x.IsOthPerm4, "true")有
+            &nbsp;
+            @Html.Label("權限名稱：")
+            @Html.TextBoxFor(x => x.OthPerm4Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.OthPerm4Name, "", new { @class = "help-block" })
+        </div>
+        <div class="col-3">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.IsOthPerm5)
+        </div>
+        <div class="col-9">
+            @Html.RadioButtonFor(x => x.IsOthPerm5, "false")無
+            @Html.RadioButtonFor(x => x.IsOthPerm5, "true")有
+            &nbsp;
+            @Html.Label("權限名稱：")
+            @Html.TextBoxFor(x => x.OthPerm5Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.OthPerm5Name, "", new { @class = "help-block" })
+        </div>
+    </div>
+</div>

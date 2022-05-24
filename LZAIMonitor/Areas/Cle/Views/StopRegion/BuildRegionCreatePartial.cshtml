@@ -1,0 +1,108 @@
+﻿@model LZAIMonitor.Areas.Cle.Models.StopRegion.StopRegionDocModel
+<div class="row border border-2 rounded-2 bg-secondary bg-opacity-50 text-center mb-sm-2">
+    <p class="col-sm-3 mt-sm-3">警示區名稱</p>
+    <p class="col-sm-3 mt-sm-3">管制類別</p>
+    <p class="col-sm-3 mt-sm-3">繪圖</p>
+    <p class="col-sm-3 mt-sm-3">紀錄警示資訊</p>
+</div>
+@using (Html.BeginForm("Query", "Func", FormMethod.Post, new
+{
+    id = "InsertDocForm",
+    autocomplete = "off",
+    onsubmit = "return false;"
+}))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="row text-center">
+        <div class="col-sm-3 mt-sm-2">
+            @Html.TextBoxFor(x => x.StopRegionFile.RegionName, new { @Class = "form-control", @placeholder = "請輸入警示區名稱" })
+            @Html.ValidationMessageFor(x => x.StopRegionFile.RegionName, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-3 mt-sm-2">
+            @Html.DropDownListFor(x => x.StopRegionFile.category, (IEnumerable<SelectListItem>)ViewBag.StopTypeList, "請選擇",new { @class = "form-control" })
+
+            @Html.ValidationMessageFor(x => x.StopRegionFile.category, "", new { @class = "text-danger" })
+        </div>
+        <div class="col-sm-3">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label>點狀</label>
+                    <div>
+                        <a href="#" onclick="RegionMap.AddMarker()" id="placemark_b">
+                            <img src="~/images/StopRegion/Bmu.png" alt="開啟點狀"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label>區域</label>
+                    <div>
+                        <a href="#" onclick="RegionMap.DrawiLine()" id="shape_b">
+                            <img src="~/images/StopRegion/Bpu.png" alt="開啟區域"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <label>定位</label>
+                    <div>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#Stop_TY">
+                            <img src="~/images/StopRegion/tools.png" alt="開啟定位系統"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 mt-sm-2">
+            <button class="btn btn-success disabled" id="BtnSave" onclick="RegionMap.Save()">紀錄</button>
+        </div>
+    </div>
+    @* 警示區HD *@
+    @Html.HiddenFor(x => x.RegionWKT)
+    @Html.HiddenFor(x => x.RegionPoints)
+    @Html.HiddenFor(x => x.StopRegionFile.StopType)
+    <!-- Modal -->
+    <div class="modal fade" id="Stop_TY" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">警示區定位功能</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    @*<span class="text-danger">說明：可將多筆地號劃設為一個管制區</span>*@
+                </div>
+                <div class="modal-body">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="1" checked="checked">
+                        <label class="form-check-label" for="inlineRadio1">經緯度</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="2">
+                        <label class="form-check-label" for="inlineRadio2">地址</label>
+                    </div>
+                    <div class="row mb-sm-2">
+                        <label class="col-sm-2 col-form-label">緯度：</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="y"/>
+                        </div>
+                        <label class="col-sm-2 col-form-label">經度：</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="x"/>
+                        </div>
+                    </div>
+                    <div class="row mt-sm-2">
+                        <label class="col-sm-2 col-form-label">地址：</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="addr"/>
+                        </div>
+                    </div>
+                    <div class="text-center mt-sm-3">
+                        <button class="btn btn-success" onclick="LocateMap()">定位</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeModal" type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉視窗</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

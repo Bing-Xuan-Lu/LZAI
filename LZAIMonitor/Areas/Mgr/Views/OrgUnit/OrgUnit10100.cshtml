@@ -1,0 +1,38 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models.OrgUnit
+
+@model OrgUnitViewModel
+
+
+@{
+    ViewBag.Title = "單位管理";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+@section scripts {
+    @Styles.Render("~/Content/BootstrapTableCss")
+    @Scripts.Render("~/bundles/BoostrapTableJs")
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlQuery = '@Url.Action("Query")';
+        var UrlEdit =  '@Url.Action("OrgUnit201E0")';
+        var UrlInsert =  '@Url.Action("OrgUnit201A0")';
+        var UrlDelete = '@Url.Action("Delete")';
+    </script>
+    <script src="~/Scripts/Views/Mgr/OrgUnit/OrgUnit10100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+}
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;">
+    <h2 class="title">
+        <span>
+            單位管理
+        </span>
+    </h2>
+    @using (Html.BeginForm("Query", "OrgUnit", FormMethod.Post, new { id = "QueryForm", @novalidate = "", autocomplete = "off", onsubmit = "return false;" }))
+    {
+        @Html.AntiForgeryToken();@*注意!! 未使用Ajax傳資料記得使用此Token*@
+
+        { Html.RenderPartial("OrgUnit101F0Partial", Model); }
+        { Html.RenderPartial("OrgUnit10110Partial", Model.DataList); }
+    }
+
+</div>
+
+

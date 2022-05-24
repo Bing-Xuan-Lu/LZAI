@@ -1,0 +1,38 @@
+﻿@using LZAI.Model.DB
+@model IEnumerable<Stop_Region_File>
+
+<h5 class="border-top text-center mb-sm-2 pt-sm-3">警示區清單</h5>
+
+@using (Html.BeginForm("Query", "StopRegion", FormMethod.Post, new
+{
+    id = "QueryForm",
+    @novalidate = "",
+    autocomplete = "off",
+    onsubmit = "return false;"
+}))
+{
+    @(Html.TableFor<Stop_Region_File>().Columns(col =>
+    {
+        col.Field(x => x.ID).Visible(false);
+        col.Field(x => x.RegionName).AddProperty("data-width", "75%").AddProperty("data-sortable", "true");
+        col.Field(x => x).Title("操作功能").AddProperty("data-width", "25%")
+            .AddProperty("data-formatter", "operateFormatter");
+    }
+        ).DataSource(Model)
+        .AddProperty("id", "table")
+        .AddProperty("data-toggle", "table")
+        .AddProperty("data-ajax", "ajaxRequest")
+        .AddProperty("data-pagination", "true")
+        .AddProperty("data-pagination-pre-text", "上一頁")
+        .AddProperty("data-pagination-next-text", "下一頁")
+        .AddProperty("data-locale", "zh-TW")
+        .AddProperty("data-page-size", "10")
+        .AddProperty("data-page-list", "[10]")
+        .AddProperty("data-click-to-select", "true")
+        .AddProperty("data-sort-class", "table-active")
+        .AddProperty("data-toolbar", "#toolbar")
+        .AddProperty("data-search", "true")
+        .AddProperty("data-virtual-scroll", "true")
+        .AddProperty("class", "table table-striped table-hover table-bordered  text-center ")
+        .Render())
+}

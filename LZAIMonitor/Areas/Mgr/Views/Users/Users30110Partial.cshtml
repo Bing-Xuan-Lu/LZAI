@@ -1,0 +1,50 @@
+﻿@using LZAI.MgrLib.Model.DB
+
+@model List<VwMgrUsers>
+
+
+
+<div class="pt-2">
+    @(Html.DataTableFor<VwMgrUsers>
+    ().Columns(
+    col =>
+    {
+
+        col.Field(x => x.UserName);
+        col.Field(x => x.Account);
+
+        col.Field(x => x.GroupName);
+        col.Field(x => x.UnitName);
+        col.Field(x => x.Department);
+        col.Field(x => x.Job);
+        col.Field(x => x.Email);
+        col.Field(x => x.PhoneNumber);
+        col.Field(x => x.Tel);
+        col.Field(x => x.UserId).Title("操作功能").Render("operateFormatter").Width("15%");
+
+    }
+    ).AddProperty("id", "queryTable")
+    .AddProperty("class", "table table-striped table-bordered table-hover  text-center")
+    .Paging(true)
+    .Processing(true)
+    .Destroy(true)
+    .ServerSide(true)
+    .AutoWidth(false)
+    .Searching(false)
+    .Ordering(false)
+    .PageLength(10)
+    .LengthChange(true)
+    //.LengthMenu("lengthMenuList")
+    .Language(new PSTFrame.MVC.Helper.Table.DataTablesLanguage { Url = "../../Scripts/datatables-zh-TW.js", ZeroRecords = "沒有符合的結果" })
+    .Ajax(new PSTFrame.MVC.Helper.Table.DataTablesAjax
+    {
+        Method = "post",
+        Url = Url.Content("~/Mgr/Users/QueryUsersid"),
+        Data = "ajaxParam",
+
+    })
+    .ToHtml()
+
+    )
+
+</div>

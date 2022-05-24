@@ -1,0 +1,182 @@
+﻿@using System.Configuration
+@{
+    /**/
+
+    ViewBag.Title = "車道模式";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@* TGOS *@
+<link href="~/Content/TGMap/Map.css" rel="stylesheet" />
+<link href="~/Content/Bootstrap-image-checkbox/bootstrap-image-checkbox.css" rel="stylesheet" />
+<script src="https://api.tgos.tw/TGOS_API/tgos?ver=2&AppID=@ConfigurationManager.AppSettings["TGOSMapAppId"]&APIKey=@ConfigurationManager.AppSettings["TGOSMapAppKey"]"
+        charset="utf-8"></script>
+<script src="~/Scripts/vue.js"></script>
+<script src="~/Scripts/Common/Map/Map.js"></script>
+<script src="~/Scripts/Common/Map/MapTools.js"></script>
+<script src="~/Scripts/jquery.signalR-2.4.3.js"></script>
+<script type="text/javascript" src="@Url.Content("~/signalr/hubs")"></script>
+@Styles.Render("~/Content/BootstrapTableCss")
+@Scripts.Render("~/bundles/BoostrapTableJs")
+<script src="~/Scripts/BootstrapTable/bootstrap-table-vue.min.js"></script>
+<script type="module" src="~/Scripts/Views/Monitor/CarWatch.js"></script>
+<div id="CarWatch">
+    <div class="row">
+        <div class="col-sm-4 overflow-scroll" style="height: 50em;">
+            <div v-bind:class="{ 'invisible': HisTroyEventId > 0 }">
+                <div class="row g-3 mt-1 mb-3">
+                    <div class="col-sm-6 d-grid gap-2">
+                        <button class="btn btn-outline-success position-relative me-sm-3 btn-lg" data-bs-toggle="button" v-on:click="ChangeLane(1)" v-bind:class="{ 'btn-success': LaneInfo.CarLaneNum === 1 }">
+                            <span v-bind:class="{ 'text-white': LaneInfo.CarLaneNum === 1 }" v-if="LaneInfo.CarLaneNum === 1">
+                                車道1
+                            </span>
+                            <span v-else>切換車道1</span>
+                        </button>
+                    </div>
+                    <div class="col-sm-6 d-grid gap-2">
+                        <button class="btn btn-outline-success position-relative btn-lg" data-bs-toggle="button" v-on:click="ChangeLane(2)" v-bind:class="{ 'btn-success': LaneInfo.CarLaneNum === 2 }">
+                            <span v-bind:class="{ 'text-white': LaneInfo.CarLaneNum === 2 }" v-if="LaneInfo.CarLaneNum === 2">
+                                車道2
+                            </span>
+                            <span v-else>切換車道2</span>
+                        </button>
+                        <input type="hidden" :value="LaneInfo.CarLaneNum" />
+                    </div>
+                </div>
+                <div class="row g-3 mt-1 mb-3 border-top">
+                    <div class="col-sm-auto">
+                        <div class="btn-group" role="group">
+                            <select class="form-control" id="ddlHisPlate_no">
+                                <option v-for="list in HisPlate_noList" :value="list.value">{{list.text}}</option>
+                            </select>
+                            <input type="button" value="手動查詢" class="btn btn-info"
+                                   data-bs-toggle="modal"
+                                   data-bs-target="#handModal" />
+                            <input type="button" value="進場紀錄" class="btn btn-secondary"
+                                   onclick="Sweet2editDialog('進場紀錄', '/Cle/CarWatchRecord/CarWatchRecord10100', 1080, 640, 'IsFront=1', { showCancelButton: true, })" />
+                        </div>
+                    </div>
+                </div>
+                <!-- 手動查詢Modal -->
+                <div class="modal fade" id="handModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="handModal" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">手動查詢</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row ms-sm-2">
+                                    <div class="col-sm-6 form-check">
+                                        <div class="custom-control image-checkbox">
+                                            <input type="radio" class="custom-control-input form-check-input" id="ck2a" name="ck2" v-model="HandEventInfo.IsImage"
+                                                   value="false">
+                                            <label class="d-flex justify-content-center align-items-center custom-control-label" for="ck2a">
+                                                <span style="height: 5em;">無照片</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 form-check">
+                                        <div class="custom-control image-checkbox">
+                                            <input type="radio" class="custom-control-input form-check-input" id="ck2b" name="ck2" v-model="HandEventInfo.IsImage"
+                                                   value="true">
+                                            <label class="form-check-label custom-control-label" for="ck2b">
+                                                <img :src="HandEventInfo.CarImg" alt="#" class="img-fluid">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="row w-100">
+                                    <div class="col-sm-7">
+                                        <p>[時間]：{{ HandEventInfo.DateTime}}</p>
+                                        <p>[辨識車號]：{{HandEventInfo.Plate_noTxt}}</p>
+                                    </div>
+                                    <div class="col-sm-auto">
+                                        <button type="button" class="btn btn-primary" v-on:click="ManualEvent($event)">確認</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" ref="closeModal">返回</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-sm-3 justify-content-center bg-opacity-50"
+                 v-bind:class="[carInfo.StatusClass()]">
+                <div class="col-sm-6 border border-light border-4">
+                    <p class="text-center mb-sm-3 text-wrap">前車牌號碼</p>
+                    <h4 class="text-center fw-bolder mt-sm-3">{{ carInfo.HeadNo }}</h4>
+                </div>
+                <div class="col-sm-6 border border-light border-4">
+                    <p class="text-center mb-sm-3 text-wrap">後車牌號碼</p>
+                    <h4 class="text-center fw-bolder mt-sm-3">{{ carInfo.Plate_No }}</h4>
+                </div>
+            </div>
+            <h4 class="text-center text-secondary" v-if="carInfo.Status == 0">{{ carInfo.Message }}</h4>
+            <h4 class="text-center text-success" v-else-if="carInfo.Status == 1">車輛正常</h4>
+            <h4 class="text-center text-danger" v-else-if="carInfo.Status == 2">車輛未於管制清冊內</h4>
+            <h4 class="text-center text-danger" v-else-if="carInfo.Status == 3">車輛無GPS軌跡資料</h4>
+            <h4 class="text-center text-danger" v-else-if="carInfo.Status == 4">車輛行經警示區</h4>
+            <div class="row mt-sm-3">
+                <!--BS5 輪播器-->
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img :src="carInfo.HeadImageUrl" class="d-block w-100" alt="img1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-sm-3">
+                <h3 class="text-center">事業點資訊</h3>
+                <div class="d-flex align-items-center">
+                    <strong>{{ tables.CleInfoMessage }}</strong>
+                    <div v-bind:class="tables.CleInfoMessage == '讀取中...' ? 'spinner-border' : ''" role="status" aria-hidden="true"></div>
+                </div>
+                <bootstrap-table :columns="tables.CleInfoColumns" :data="tables.CleInfoData" :options="tables.BSTableOptions"></bootstrap-table>
+            </div>
+            <div class="row mt-sm-3">
+                <h3 class="text-center">行經警示區</h3>
+                <div class="d-flex align-items-center">
+                    <strong>{{ tables.CleStopRegionMessage }}</strong>
+                    <div v-bind:class="tables.CleInfoMessage == '讀取中...' ? 'spinner-border' : ''" role="status" aria-hidden="true"></div>
+                </div>
+                <bootstrap-table :columns="tables.CleStopRegionColumns" :data="tables.CleStopRegionData" :options="tables.BSTableOptions"></bootstrap-table>
+            </div>
+        </div>
+        <div class="col-sm-8 bg-success bg-opacity-10 position-relative overflow-hidden" style="height: 50em;">
+            <!-- 地圖 -->
+            <div id="map" class="w-100 h-100"></div>
+            <!--地圖小工具通用 -->
+            <div class="position-absolute translate-middle" style="left: 96%; top: 60%;">
+                <a href="javascript:;" class="increase_icon" title="放大">
+                    <img src="/images/MapIcon/zoombig.png" />
+                </a>
+                <a href="javascript:;" class="minify_icon phonenone" title="縮小">
+                    <img src="/images/MapIcon/zoomsmall.png" />
+                </a>
+                <a href="javascript:;" class="reload_icon" title="重整">
+                    <img src="/images/MapIcon/reform.png" />
+                </a>
+                <a href="javascript:;" class="map_reset_icon" title="清除圖層">
+                    <img src="/images/MapIcon/map_reset.png" />
+                </a>
+            </div>
+            <!--下方xy座標 -->
+            <div class="epsg_wrap position-absolute translate-middle w-25" style="left: 85%; top: 80%;">
+                <p>WGS84：X:<mark class="WGS84_x"></mark>,Y:<mark class="WGS84_y"></mark></p>
+                <p>TWD97：X:<mark class="TWD97_x"></mark>,Y:<mark class="TWD97_y"></mark></p>
+            </div>
+            <div id="timePlay" style="position: absolute; left: 0; bottom: 0; width: 100%; height: 100px; z-index: 99; background-color: rgba(0,0,0,0.3); text-align: center; padding: 50px 0px; display: none">
+                <button type="button" style="vertical-align: top; background-color: DodgerBlue; border: none; margin: 0px 20px; padding: 5px 8px; font-size: 12px; cursor: pointer;">
+                    <i id="Control" class="fa fa-play" style="color: white;"></i>
+                </button>
+                <div id="slider" style="width: 85%; display: inline-block; border-radius: 6px;"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

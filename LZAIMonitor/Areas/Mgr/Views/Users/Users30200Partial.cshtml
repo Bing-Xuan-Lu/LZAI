@@ -1,0 +1,80 @@
+﻿@using PSTFrame.MVC.Model
+
+@model LZAIMonitor.Areas.Mgr.Models.Users.UsersDocModel
+@{
+    ViewBag.Title = "Users30200Partial";
+    Layout = null;
+}
+@section scripts {}
+
+<div class="hidden">
+
+    @Html.HiddenFor(x => x.mgrUsers.UserId)
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Account, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Account, new { @class = "form-control" })
+            <label></label>
+        </div>
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.UserName, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.UserName, new { @class = "form-control", maxlength = "8" })
+            <label>　</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Department, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Department, new { @class = "form-control" })
+            <label></label>
+        </div>
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Job, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Job, new { @class = "form-control" })
+            <label>　</label>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Tel, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.Tel, new { @class = "form-control", @placeholder = "格式：03-3860569#000" })
+            <label>　</label>
+        </div>
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.PhoneNumber, new { @required = "" })
+        </div>
+        <div class="col-4">
+            @Html.TextBoxFor(x => x.mgrUsers.PhoneNumber, new { @class = "form-control", @placeholder = "格式：0912-345678" })
+            <label>　</label>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-2">
+            @Html.LabelFor(x => x.mgrUsers.Email, new { @required = "" })
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(x => x.mgrUsers.Email, new { @class = "form-control", @placeholder = "abc@gmail.com" })
+            <label>　</label>
+        </div>
+    </div>
+ 
+         
+   
+
+</div>
+

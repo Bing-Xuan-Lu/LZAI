@@ -1,0 +1,18 @@
+﻿<div class="row" id="RealTime">
+    <div class="row g-3 mt-1 mb-3">
+        <div class="col-sm-auto">
+            <div class="btn-group" role="group">
+                <input type="text" placeholder="請輸入前車牌" class="form-control" v-model="plate_no" />
+                <input type="button" value="查詢" class="btn btn-info" data-bs-toggle="button" v-on:click="GetRealTimeData()" />
+                <input type="button" value="清空" class="btn btn-secondary" data-bs-toggle="button" v-on:click="plate_no = '';RealTimeCarData = []" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <bootstrap-table :columns="RealTimeCarColumns" :data="RealTimeCarData" :options="BSTableOptions"></bootstrap-table>
+    </div>
+    <div id="popup" class="ol-popup">
+        <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+        <div id="popup-content"></div>
+    </div>
+</div>

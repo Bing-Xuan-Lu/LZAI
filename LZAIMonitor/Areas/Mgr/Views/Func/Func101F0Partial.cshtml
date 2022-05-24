@@ -1,0 +1,30 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models
+
+@model FuncViewModel.Filter
+
+<div>
+    @Html.ValidationSummary(true)
+    <div class="form-group row">
+        <div class="col-2">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.QueryFuncTypeId)
+        </div>
+        <div class="col-10">
+            @Html.DropDownListFor(x => x.QueryFuncTypeId, (IEnumerable<SelectListItem>) ViewBag.MgrFuncType, "全部"
+                , new {@class = "browser-default custom-select"})
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-2">
+            <span style="color: red;">*</span>
+            @Html.LabelFor(x => x.QueryFuncName)
+        </div>
+        <div class="col-10">
+            @Html.TextBoxFor(x => x.QueryFuncName, new { @class = "form-control" })
+        </div>
+    </div>
+    <button type="button" id="Query" onclick="Keyword()" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;" class="btn btn-primary">查詢</button>
+    <button type="button" id="Insert" onclick="Sweet2addDialog('新增',UrlInsert,900,600)" style="font-weight: bold; border-radius: 45px; width: 100px;background-image:none !important;" class="btn btn-success">新增</button>
+</div>
+
+

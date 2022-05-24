@@ -1,0 +1,111 @@
+﻿@using LZAIMonitor.Controllers
+@{
+    WebBaseController controller = ViewContext.Controller as WebBaseController;
+    if (controller == null)
+    {
+        throw new ApplicationException("Controller 必須繼承自 WebBaseController.");
+    }
+    var UserId = controller.LoginUser.UserId;
+    var LoginPermission = controller.LoginUser.LoginPermission == null ? "" : controller.LoginUser.LoginPermission;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>宜蘭縣利澤垃圾資源回收（焚化）廠</title>
+    @Styles.Render("~/Content/bootstrap")
+    @Styles.Render("~/Content/sweetalert2Css")
+    @Styles.Render("~/Content/Select2")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/Select2")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/Common")
+    @Scripts.Render("~/bundles/sweetalert2Js")
+    @RenderSection("scripts", required: false)
+    <style>
+        /* ============ Bootstrap 5 Dropdown Hover ============ */
+        @@media all and (min-width: 992px) {
+            .navbar .nav-item .dropdown-menu {
+                display: none;
+            }
+
+            .navbar .nav-item:hover .nav-link {
+            }
+
+            .navbar .nav-item:hover .dropdown-menu {
+                display: block;
+            }
+
+            .navbar .nav-item .dropdown-menu {
+                margin-top: 0;
+            }
+        }
+        /* ============ desktop view .end// ============ */
+    </style>
+    <script>
+        var _TokenHeader = { 'RequestVerificationToken': '@CommonRazorFunctions.GetAntiForgeryToken()' };
+    </script>
+</head>
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg sticky-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("CarWatch", "Monitor", new {area = ""})">
+                <img src="~/images/LOGO2.png" style="width: 20em;" alt="" class="d-inline-block align-text-top" />
+            </a>
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarMgrNav"
+                    aria-controls="navbarMgrNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarMgrNav">
+                <ul class="navbar-nav">
+                    @if (LoginPermission != "B")//一般
+                    {
+                        <li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Cle/WasteCar/WasteCar10100")"> 車輛管理</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Cle/GrantInfo/GrantInfo10100")"> 事業管理</a></li>
+                        <li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Cle/CarWatchRecord/CarWatchRecord10100")"> 車牌辨識紀錄</a></li>
+                        <li class="nav-item"><a class="nav-link" href="@Url.Action("BuildRegion", "StopRegion", new { area = "CLE" })"> 警示區管理</a></li>
+                    }
+                <li class="nav-item"><a class="nav-link" onclick="Sweet2editDialog('編輯','/Mgr/Users/Users301E0',900,450,'UserId=@UserId') " href="javascript:void(0)"> 個人資料維護</a></li>
+                    @*<li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Mgr/Users/Users30100")"> 個人資料維護</a></li>*@
+                    @if (LoginPermission != "B")//一般
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                               role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                帳管權限
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="@Url.Content("/Mgr/Users/Users10100")">帳號管理</a></li>
+                                <li><a class="dropdown-item" href="@Url.Content("/Mgr/OrgUnit/OrgUnit10100")">單位管理</a></li>
+                                <li><a class="dropdown-item" href="@Url.Content("/Mgr/Func/Func10100")">功能管理</a></li>
+                                <li><a class="dropdown-item" href="@Url.Content("/Mgr/Group/Group10100")">群組管理</a></li>
+                            </ul>
+                        </li>
+                    }
+                    @if (LoginPermission == "C")//管理
+                    {
+                        <li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Content("/Cle/AuditEvent/AuditEvent10100")"> 稽核記錄</a></li>
+                    }
+                    <li class="nav-item"><a class="nav-link" onclick="sweet2load()" href="@Url.Action("CarWatch", "Monitor", new {area = ""})"> 回車道監控</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="return SweetAlertCheck(this, '登出', '即將進行登出', '!')" href="@Url.Action("Logout", "Home", new {area = ""})">
+                            <i class="fa fa-sign-out"></i> 登出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div>
+        <div class="container-fluid"> @RenderBody()</div>
+    </div>
+</body>
+</html>

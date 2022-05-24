@@ -1,0 +1,44 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models
+@model FuncViewModel
+@{
+    ViewBag.Title = "功能管理";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+
+@section scripts {
+
+    @Styles.Render("~/Content/BootstrapTableCss")
+    @Scripts.Render("~/bundles/BoostrapTableJs")
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlEdit =  '@Url.Action("Func201E0")';
+        var UrlDelete = '@Url.Action("Delete")';
+        var UrlInsert = '@Url.Action("Func201A0")';
+    </script>
+    <script src="~/Scripts/Views/Mgr/Func/Func10100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+    @*<<<<<<<所有的JS請寫在這邊*@
+}
+
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;">
+    <h2 class="title">
+        <span>
+            功能管理功能
+        </span>
+    </h2>
+    @using (Html.BeginForm("Query", "Func", FormMethod.Post, new
+    {
+        id = "QueryForm",
+        @novalidate = "",
+        autocomplete = "off",
+        onsubmit = "return false;"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        {
+            Html.RenderPartial("Func101F0Partial", Model.QueryFilter);
+        }
+        {
+            Html.RenderPartial("Func10110Partial", Model.DataList);
+        }
+    }
+</div>

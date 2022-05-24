@@ -1,0 +1,204 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+/*
+body {
+    background-color: #fbfecb;
+    font-family: Microsoft JhengHei;
+}*/
+
+img {
+    max-width: 100%;
+}
+
+input {
+    font-family: Microsoft JhengHei;
+    font-size: 20px;
+}
+
+.login_wrap {
+    width: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    padding: 20px;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 3px 10px 10px 3px #cccccc;
+    transform: translate(-50%, -50%);
+}
+
+@media all and (max-width: 767px) {
+    .login_wrap {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+.title {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+    .content .pic_wrap {
+        width: 40%;
+        text-align: center;
+    }
+
+@media all and (max-width: 767px) {
+    .content .pic_wrap {
+        width: 100%;
+    }
+}
+
+.content .login_form {
+    width: 60%;
+    text-align: center;
+}
+
+@media all and (max-width: 767px) {
+    .content .login_form {
+        width: 100%;
+    }
+}
+
+.content .login_form > div {
+    margin: 20px 0;
+}
+
+.content .login_form .labelFormat {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.content .login_form .inputFormat {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60%;
+    height: 36px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.login_submit {
+    display: block;
+    margin: auto;
+    width: 50%;
+    background: linear-gradient(#0078c4, #0045a1);
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.login_back {
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 50%;
+    background: linear-gradient(#eb9e66, #ff6a00);
+    cursor: pointer;
+}
+
+.grayLink {
+    border: none;
+    background-color: transparent;
+    color: #9a999b;
+    text-decoration: underline;
+    display: inline-block;
+    width: 50%;
+    cursor: pointer;
+}
+
+body {
+    background: url('../images/dqahologo.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    font-family: Microsoft JhengHei;
+}
+
+#login-box {
+    width: 35%;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 13%;
+    text-align: center;
+    background: #fff; /*linear-gradient(to right, #0096C7 0%, #CAF0F8 100%);*/
+    padding: 30px 50px;
+    border-radius: 10px;
+    border-width:1px;
+    border-style :solid;
+        border-color:blue;
+}
+
+    #login-box h1 {
+        color: #000000;
+    }
+
+.item {
+    margin-top: 15px;
+}
+
+    .item i {
+        font-size: 18px;
+        color: #000000;
+    }
+
+    .item input {
+        width: 180px;
+        font-size: 18px;
+        border: 0;
+        border-bottom: 2px solid #000000;
+        padding: 5px 10px;
+        background: #ffffff00;
+        color: #000000;
+    }
+
+.Greenbutton {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #585858;
+    background-image: linear-gradient(to right, #a5dc8696 0%, #a5dc86 100%);
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 3px #cccccc;
+}
+.Graybutton {
+    margin-top: 30px;
+    margin-right: 10px;
+    margin-left: 10px;
+    width: 120px;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #585858;
+    background-image: linear-gradient(to right, rgb(14 14 14 / 25%) 0%, #bbbbbb6b 100%);
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 3px #cccccc;
+}

@@ -1,0 +1,36 @@
+﻿@using LZAI.MgrLib.Model.DB
+@model MgrFunc
+@{
+    ViewBag.Title = "Func201E0";
+    Layout = "~/Views/Shared/_DocumentDialogLayout.cshtml";
+}
+
+@section scripts {
+    <script src="~/Scripts/Views/Mgr/Func/Func201E0.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+    <script type="text/javascript">
+        var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlUpdate = '@Url.Action("Update")';
+        var NavList =  '@Url.Action("NaviList")';
+    </script>
+}
+<div style="margin:0 auto;width:80%;background-color:white;padding:20px;border-radius:1.5rem;max-width:1024px">
+    <h2 class="title">
+        <span>
+            功能修改
+        </span>
+    </h2>
+    @section buttons{
+        <button id="btnMgrFuncUpdate" onclick="Update();" class="btn btn-primary" style="background-image:none !important;">修改</button>
+        <button onclick="window.parent.Swal.close();" class="btn btn-secondary" style="background-image:none !important;">取消</button>
+    }
+    @using (Html.BeginForm("Update", "Func", FormMethod.Post, new { id = "UpdateDocForm", @novalidate = "", autocomplete = "off", onsubmit = "return false;" }))
+    {
+        @Html.AntiForgeryToken();
+
+        { Html.RenderPartial("Func20100Partial", Model); }
+    }
+
+</div>
+
+
+

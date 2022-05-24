@@ -1,0 +1,104 @@
+﻿.option {
+    position: relative;
+    top: 3.33333px;
+    height: 25px;
+    width: 50px;
+}
+
+    .option:checked::before {
+        display: flex;
+        content: '\f00c';
+        font-size: 25px;
+        font-weight: bold;
+        justify-content: center;
+        font-family: 'Font Awesome 5 Free';
+    }
+
+
+.label666 {
+    font-family: "Montserrat", sans-serif;
+    font-size: 20px;
+    margin: 5px;
+}
+
+
+.TextBox666 {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-style: italic;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    margin-top: 10px;
+}
+
+    .TextBox666:focus {
+        outline: none;
+        margin-top: 10px;
+        height: 30px;
+        font-size: 20px;
+        border-bottom: 1px solid rgb(243 34 34);
+    }
+
+.TextBox777 {
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    font-style: italic;
+    border-bottom: 1px solid rgb(211, 211, 211);
+    margin-top: 10px;
+    width: 300px;
+}
+
+.textarea {
+    overflow: hidden;
+    width: 190.4px;
+    display: block;
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+
+.showbox {
+    overflow: hidden;
+    /*position: relative;*/
+}
+
+    .showbox:hover::after {
+        overflow-y: auto;
+        text-align: left;
+        position: absolute;
+        padding: 5px 5px 5px 5px;
+        transform: translateY(-100%);
+        z-index: 99;
+        color: #ffffff;
+        background: #808080;
+        max-width: 500px;
+        max-height: 200px;
+        border: 1px solid #000000;
+        white-space: pre; /*換行用*/
+        word-wrap: break-word; /*換行用*/
+        content: attr(text);
+
+
+    }
+
+.Data-Title {
+    float: left;
+    width: 50%;
+    text-align-last: justify;
+    margin-top: 15px;
+}
+
+.Data-Items {
+    float: right;
+    width: 45%;
+    text-align: left;
+    text-align-last: justify;
+    margin-top: 15px;
+}
+
+
+#imagebox {
+    max-width: 400px;
+    position: absolute;
+    display: none;
+    background-color: antiquewhite;
+    z-index: 99;
+}

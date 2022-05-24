@@ -1,0 +1,51 @@
+﻿@using LZAI.Model.DB
+@model List<Vw_CleGrantInfo>
+
+
+
+    <div class="pt-2">
+        @(Html.DataTableFor<Vw_CleGrantInfo>
+    ().Columns(
+    col =>
+    {
+
+        col.Field(x => x.CityName);
+        col.Field(x => x.DistrictName);
+
+        col.Field(x => x.Cle_Name);
+        col.Field(x => x.Cle_No);
+        col.Field(x => x.CleNumber);
+        col.Field(x => x.Addr);
+        //col.Field(x => x.Gate_Long);
+        //col.Field(x => x.Gate_Lat);
+        col.Field(x => x.CarSelectGrantInfoCH).Title("車輛資訊").Render("CarFormatter").Width("15%");
+
+        col.Field(x => x.CleId).Title("經緯度").Render("Gate_Long_Gate_Lat").Width("15%");
+        col.Field(x => x.CleId).Title("操作功能").Render("operateFormatter").Width("15%");
+
+    }
+    ).AddProperty("id", "queryTable")
+    .AddProperty("class", "table table-striped table-bordered table-hover  text-center")
+    .Paging(true)
+    .Processing(true)
+    .Destroy(true)
+    .ServerSide(true)
+    .AutoWidth(false)
+    .Searching(false)
+    .Ordering(false)
+    .PageLength(10)
+    .LengthChange(true)
+    //.LengthMenu("lengthMenuList")
+    .Language(new PSTFrame.MVC.Helper.Table.DataTablesLanguage { Url = "../../Scripts/datatables-zh-TW.js", ZeroRecords = "沒有符合的結果" })
+    .Ajax(new PSTFrame.MVC.Helper.Table.DataTablesAjax
+    {
+        Method = "post",
+        Url = Url.Content("~/Cle/GrantInfo/Query"),
+        Data = "ajaxParam",
+
+    })
+    .ToHtml()
+
+    )
+
+</div>

@@ -1,0 +1,45 @@
+﻿@model LZAIMonitor.Areas.Cle.Models.GrantInfo.GrantInfoViewModel
+@{
+    ViewBag.Title = "事業單位管理";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+
+@section scripts {
+    @Styles.Render("~/Content/DataTableCss")
+    @Scripts.Render("~/bundles/DataTableJs")
+    <link href="~/Content/FormStyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlEdit = '@Url.Action("GrantInfo201E0")';
+         var UrlCarEdit =  '@Url.Action("GrantInfo301E0")';
+        var UrlDelete = '@Url.Action("Delete")';
+         var UrlDownload = '@Url.Action("Download")';
+        var UrlInsert =  '@Url.Action("GrantInfo201A0")';
+    </script>
+    @*<<<<<<<所有的JS請寫在這邊*@
+    <script src="~/Scripts/Views/Cle/GrantInfo/GrantInfo10100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+}
+
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;">
+    <h2 class="title">
+        <span>
+            事業單位管理
+        </span>
+    </h2>
+    @using (Html.BeginForm("Query", "GrantInfo", FormMethod.Post, new
+    {
+        id = "QueryForm",
+        @novalidate = "",
+        autocomplete = "off",
+        onsubmit = "return false;"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        {
+            Html.RenderPartial("GrantInfo101F0Partial", Model.QueryFilter);
+        }
+        {
+            Html.RenderPartial("GrantInfo10110Partial", Model.Vw_DataList);
+        }
+    }
+</div>

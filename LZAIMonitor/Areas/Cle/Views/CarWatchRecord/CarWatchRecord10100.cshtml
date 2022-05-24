@@ -1,0 +1,48 @@
+﻿@model LZAIMonitor.Areas.Cle.Models.CarWatchRecord.CarWatchRecordModel
+@{
+    ViewBag.Title = "車牌辨識紀錄";
+    //前台車牌辨識紀錄不可以使用Layout
+    Layout = (string)TempData["IsFront"] == "1" ? "~/Views/Shared/_DocumentDialogLayout.cshtml" : "~/Views/Shared/_MgrLayout.cshtml";
+}
+
+@section scripts {
+    @Styles.Render("~/Content/DataTableCss")
+    @Scripts.Render("~/bundles/DataTableJs")
+    <link href="~/Content/FormStyle.css" rel="stylesheet" />
+    <script type="text/javascript">
+    var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlDownload = '@Url.Action("Download")';
+        var UrlMonitor = '@Url.Action("CarWatch", "Monitor", new { area = "" })';
+    </script>
+    <script src="~/Scripts/Views/Cle/CarWatchRecord/CarWatchRecord10100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+}
+
+@if ((string)TempData["IsFront"] == "1")
+{
+    @section buttons{
+        <div></div>
+    }
+}
+
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;">
+    <h2 class="title">
+        <span>
+            車牌辨識紀錄
+        </span>
+    </h2>
+    @using (Html.BeginForm("Query", "GrantInfo", FormMethod.Post, new
+    {
+        id = "QueryForm",
+        @novalidate = "",
+        autocomplete = "off",
+        onsubmit = "return false;"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        {
+            Html.RenderPartial("CarWatchRecord101F0Partial", Model.QueryFilter);
+            Html.RenderPartial("CarWatchRecord10110Partial", Model.DataList);
+        }
+    }
+
+</div>

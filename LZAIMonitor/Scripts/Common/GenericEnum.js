@@ -1,0 +1,1 @@
+﻿const DocMode = Object.freeze({ "Read": 1, "Create": 2, "Edit": 3 });

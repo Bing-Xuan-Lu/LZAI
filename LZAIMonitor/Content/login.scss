@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fbfecb;
+    font-family: Microsoft JhengHei;
+    font-size: 20px;
+}
+
+img {
+    max-width: 100%;
+}
+
+input {
+    font-family: Microsoft JhengHei;
+    font-size: 20px;
+}
+
+.login_wrap {
+    width: 50%;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    padding: 20px;
+    overflow: auto;
+    border-radius: 10px;
+    box-shadow: 3px 10px 10px 3px #cccccc;
+    transform: translate(-50%, -50%);
+
+    @media all and (max-width: 767px) {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+.title {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    .pic_wrap {
+        width: 40%;
+        text-align: center;
+
+        @media all and (max-width: 767px) {
+            width: 100%;
+        }
+    }
+
+    .login_form {
+        width: 60%;
+        text-align: center;
+        font-size: 0;
+
+        @media all and (max-width: 767px) {
+            width: 100%;
+        }
+
+        > div {
+            margin: 20px 0;
+        }
+
+        .labelFormat {
+            display: inline-block;
+            vertical-align: middle;
+            width: 20%;
+            text-align: right;
+            margin-right: 5px;
+        }
+
+        .inputFormat {
+            display: inline-block;
+            vertical-align: middle;
+            width: 60%;
+            height: 36px;
+            padding: 0 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    }
+}
+
+.login_submit {
+    display: block;
+    margin: auto;
+    width: 50%;
+    background: linear-gradient(#0078c4, #0045a1);
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.login_back {
+    border: none;
+    text-decoration: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: block;
+    margin: 10px auto 0 auto;
+    width: 50%;
+    background: linear-gradient(#eb9e66, #ff6a00);
+    cursor: pointer;
+}
+
+.grayLink {
+    border: none;
+    background-color: transparent;
+    color: #9a999b;
+    text-decoration: underline;
+    display: inline-block;
+    width: 50%;
+    cursor: pointer;
+}

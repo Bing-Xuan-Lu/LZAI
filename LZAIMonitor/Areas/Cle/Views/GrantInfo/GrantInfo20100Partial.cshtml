@@ -1,0 +1,116 @@
+﻿@using LZAIMonitor.Areas.Cle.Models.GrantInfo
+@model  GrantInfoDocModel
+    <link href="~/Content/FormStyle.css" rel="stylesheet" />
+@section scripts {
+}
+
+<div class="hidden">
+    @Html.HiddenFor(x => x.GetCleGrantInfo.CleId)
+</div>
+
+<div class="container">
+    @Html.ValidationSummary(true)
+    <div class="form-group">
+        <div class="row pb-4">
+            <div class="col-2">
+
+                @Html.LabelFor(x => x.GetCleGrantInfo.CleNumber)
+            </div>
+            <div class="col-4">
+                @Html.TextBoxFor(x => x.GetCleGrantInfo.CleNumber, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.GetCleGrantInfo.CleNumber, "", new { @class = "help-block" })
+            </div>
+            <div class="col-2">
+                @Html.LabelFor(x => x.GetCleGrantInfo.Cle_No)
+            </div>
+            <div class="col-4">
+                @Html.TextBoxFor(x => x.GetCleGrantInfo.Cle_No, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.GetCleGrantInfo.Cle_No, "", new { @class = "help-block" })
+            </div>
+
+        </div>
+        <div class="row pb-4">
+            <div class="col-2">
+
+                @Html.LabelFor(x => x.GetCleGrantInfo.Cle_Name)
+            </div>
+            <div class="col-10">
+                @Html.TextBoxFor(x => x.GetCleGrantInfo.Cle_Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.GetCleGrantInfo.Cle_Name, "", new { @class = "help-block" })
+            </div>
+        </div>
+
+        <div class="row pb-4">
+
+
+
+            <div class="col-2">
+                @Html.LabelFor(x => x.GetCleGrantInfo.CityId)
+            </div>
+            <div class="col-4">
+
+                @Html.DropDownListFor(x => x.GetCleGrantInfo.CityId, (IEnumerable<SelectListItem>)ViewBag.SelectCity, null, new { @class = "form-control", @id = "CitySelect" })
+
+            </div>
+
+
+            <div class="col-2">
+                @Html.LabelFor(x => x.GetCleGrantInfo.DistrictId)
+            </div>
+            <div class="col-4">
+
+                @Html.DropDownListFor(x => x.GetCleGrantInfo.DistrictId, (IEnumerable<SelectListItem>)ViewBag.SelectDistrict, null, new { @class = "form-control", @id = "DistrictSelect" })
+
+            </div>
+
+
+        </div>
+        <div class="row pb-4">
+            <div class="col-2">
+
+                @Html.LabelFor(x => x.GetCleGrantInfo.Addr)
+            </div>
+            <div class="col-10">
+                @Html.TextAreaFor(x => x.GetCleGrantInfo.Addr, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.GetCleGrantInfo.Cle_No, "", new { @class = "help-block" })
+            </div>
+        </div>
+        <div class="row pb-4">
+
+            <div class="col-2">
+
+                @Html.LabelFor(x => x.GetCleGrantInfo.Gate_Long)
+            </div>
+            <div class="col-4">
+                @Html.TextBoxFor(x => x.GetCleGrantInfo.Gate_Long, new { @class = "form-control" , @maxlength = "10" })
+                @Html.ValidationMessageFor(x => x.GetCleGrantInfo.Gate_Long, "", new { @class = "help-block" })
+            </div>
+            <div class="col-2">
+                @Html.LabelFor(x => x.GetCleGrantInfo.Gate_Lat)
+            </div>
+            <div class="col-4">
+                @Html.TextBoxFor(x => x.GetCleGrantInfo.Gate_Lat, new { @class = "form-control", @maxlength = "9" })
+                @Html.ValidationMessageFor(x => x.GetCleGrantInfo.Gate_Lat, "", new { @class = "help-block" })
+            </div>
+        </div>
+
+
+
+
+
+
+        <div class="row pb-4">
+            <div class="col-2">
+                @Html.LabelFor(x => x.GetCleGrantInfo.CarSelectGrantInfo)
+            </div>
+            <div class="col-10">
+
+                @Html.DropDownListFor(x => x.CarSelect, (IEnumerable<SelectListItem>)ViewBag.SelectCar, null, new { @class = "form-control", @id = "CarSelect", @multiple = "multiple" })
+
+            </div>
+        </div>
+
+
+    </div>
+
+

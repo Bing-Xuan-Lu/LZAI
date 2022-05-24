@@ -1,0 +1,35 @@
+﻿@using LZAIMonitor.Areas.Mgr.Models.Users
+@model UsersViewModel
+@{
+    ViewBag.Title = "個人資料維護";
+    Layout = "~/Views/Shared/_MgrLayout.cshtml";
+}
+@section scripts {
+    @Styles.Render("~/Content/BootstrapTableCss")
+    @Scripts.Render("~/bundles/BoostrapTableJs")
+    @Styles.Render("~/Content/DataTableCss")
+    @Scripts.Render("~/bundles/DataTableJs")
+    <script type="text/javascript">
+        var Token = '@CommonRazorFunctions.GetAntiForgeryToken()';
+        var UrlEdit = '@Url.Action("Users301E0")';
+         var UrlQuery = '@Url.Action("QueryUsersid")';
+    </script>
+    <script src="~/Scripts/Views/Mgr/Users/Users30100.js?@DateTime.Now.ToString("yyyyMMddhhmmss")" type="text/javascript"></script>
+}
+
+<div style="margin:0 auto;width:90%;background-color:white;padding:20px;border-radius:1.5rem;">
+    <h2 class="title">
+        <span>
+            使用者管理
+        </span>
+    </h2>
+    @using (Html.BeginForm("QueryUsersid", "Users", FormMethod.Post, new { id = "QueryForm", @novalidate = "", autocomplete = "off", onsubmit = "return false;" }))
+    {
+        @Html.AntiForgeryToken();@*注意!! 未使用Ajax傳資料記得使用此Token*@
+
+        { Html.RenderPartial("Users30110Partial", Model.DataList); }
+
+    }
+</div>
+
+
